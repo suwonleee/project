@@ -1,4 +1,5 @@
-// atomFamily
+// atomFamily를 사용하여, 각 페이지마다 고유의 값 유지가 안되는 버그 수정
+// atomFamily 각각 페이지
 // 비슷한 atomFamily로 비슷한 atom을 동적으로 생성
 import React, {useState} from "react";
 import { atomFamily, useRecoilState } from "recoil";
@@ -9,6 +10,7 @@ const pageCountAtomFamily = atomFamily({
 });
 
 function usePageCount(pageNo) {
+  // pageCountAtomFamily(pageNo) -> 페이지별 고유의 값 유지하기
   const [count, setCount] = useRecoilState(pageCountAtomFamily(pageNo));
   const increaseOne = () => setCount(count + 1);
   const decreaseOne = () => setCount(count - 1);
