@@ -132,3 +132,11 @@ function App() {
 }
 
 export default App;
+
+// index.js 관련 코드
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   <RecoilRoot>
+//     <App />
+//   </RecoilRoot>
+// );
