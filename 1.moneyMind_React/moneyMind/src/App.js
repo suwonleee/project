@@ -1,23 +1,49 @@
-import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
-import ListPage from "./pages/ListPage";
-import WritePage from "./pages/WritePage";
+import { AppBar, Toolbar } from "@mui/material";
+import {
+  Navigate,
+  NavLink,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { NoticeSnackbar } from "./components/NoticeSnackbar";
+import History from "./pages/History";
+import Main from "./pages/Main";
 
 function App() {
+  const location = useLocation();
+
   return (
     <>
-      <header className='flex'>
-        <NavLink className="font-bold p-5 hover:text-red-500" to="/list">
-          리스트
-        </NavLink>
-        <NavLink className="font-bold p-5 hover:text-red-500" to="/write">
-          작성
-        </NavLink>
-        
-      </header>
+      <AppBar position="fixed">
+        <Toolbar>
+          <div className="flex-1"></div>
+          <NavLink
+            to="/main"
+            className="font-bold select-none self-stretch flex items-center"
+          >
+            스쿼트 챌린지
+          </NavLink>
+          <div className="flex-1 self-stretch flex justify-end">
+            {location.pathname !== "/history" && (
+              <NavLink className="select-none flex items-center" to="/history">
+                히스토리
+              </NavLink>
+            )}
+            {location.pathname === "/history" && (
+              <NavLink className="select-none flex items-center" to="/main">
+                뒤로가기
+              </NavLink>
+            )}
+          </div>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+      <NoticeSnackbar />
       <Routes>
-        <Route path="/list" element={<ListPage />} />
-        <Route path="/write" element={<WritePage />} />
-        <Route path="*" element={<Navigate to="/list" />} />
+        <Route path="/main" element={<Main />} />
+        <Route path="/history" element={<History />} />
+        <Route path="*" element={<Navigate to="/main" />} />
       </Routes>
     </>
   );
