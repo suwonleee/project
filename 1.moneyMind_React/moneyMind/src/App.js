@@ -1,3 +1,5 @@
+// 미션 1 : VS CODE로 스쿼트 앱 구현
+
 import { AppBar, Toolbar } from "@mui/material";
 import {
   Navigate,

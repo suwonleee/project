@@ -1,7 +1,7 @@
 import produce from "immer";
 import { useRecoilState } from "recoil";
 import { doneCountAtom, recordsAtom } from "./atoms";
-import { dateToStr } from "./util";
+import { dateToStr } from "./utils";
 
 export function useRecordsStatus() {
   const goalCount = 10000;
