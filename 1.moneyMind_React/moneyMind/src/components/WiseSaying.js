@@ -24,8 +24,10 @@ function getWiseSaying() {
 
     return data;
   }
-  //인덱스 재정렬해주기
+  //똑같은 배열 재사용(반복) 하는 방법.
+  // 만약 인덱스(index)를 받아오면 다듬어서 우리가 가진 데이터 길이에 맞게 만들기
   function get(index) {
+    //인덱스 배열이 데이터 길이로 나눈 나머지 그 인덱스 다시 재반복!
     index = index % data.length;
 
     return data[index];
@@ -41,11 +43,15 @@ function getWiseSaying() {
 
 const wiseSaying = getWiseSaying();
 
-//출력
+//다른 파일에서 사용할 수 있게 출력
 export function WiseSaying({ index }) {
+  //wiseSaying 에 인덱스를 받아오면 인덱스 내에 str 과 writer 값을 구조분해할당으로 받는다.
+  //ex) var { a1, a2, ...rest_a } = { a1 : 10, a2 : 20, a3 : 30, a4 : 40 };
+  // console.log(a1); // 10
+  // console.log(a2); // 20
   const { str, writer } = wiseSaying.get(index);
   
-  //사용자 화면에 나타내기
+  //사용자 화면에 나타내기 문장(str)과 -작가명(writer)-로 
   return (
     <>
       {str}
