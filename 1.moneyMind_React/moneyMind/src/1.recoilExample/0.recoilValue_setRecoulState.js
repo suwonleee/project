@@ -17,8 +17,10 @@ const page2NoAtom = atom({
 function Page1() {
   // page1NoAtom에 페이지 1 상태를 담아서 옮기기.
   const [no, setNo] = useRecoilState(page1NoAtom);
-  // useSetRecoilState : 페이지1에서 페이지2 상태를 제어할 수 있게 만들기.
+  // ********  useSetRecoilState   ***************
+  // use  'Set'  RecoilState : 페이지1에서 페이지2 상태를 제어할 수 있게 만들기.
   const setPage2No = useSetRecoilState(page2NoAtom);
+  // 버튼을 누르면 페이지 2번의 상태를 초기화.
   const onClick = () => setPage2No(0);
 
   return (
@@ -37,7 +39,8 @@ function Page1() {
 }
 
 function Page2() {
-  //useRecoilValue : 페이지 2에서 page1 상태를 불러오기.
+  // ********  useRecoil  'Value'   ***************
+  //useRecoilValue : 페이지 2에서 page1 값을 읽어오기.
   const page1No = useRecoilValue(page1NoAtom);
   const [no, setNo] = useRecoilState(page2NoAtom);
 
@@ -56,6 +59,7 @@ function Page2() {
 
 function App() {
   const [pageName, setPageName] = useState('page1');
+  //페이지 전환 시키는 방법
   const switchPage = () => setPageName(pageName === 'page1' ? 'page2' : 'page1');
   return (
     <>
