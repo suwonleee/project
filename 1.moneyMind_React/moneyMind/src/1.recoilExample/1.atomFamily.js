@@ -4,11 +4,14 @@ import React, {useState} from "react";
 import { atomFamily, useRecoilState } from "recoil";
 
 const pageNoAtomFamily = atomFamily({
+  // ********  atomFamily   ***************
+  // use  'Set'  RecoilState : 페이지1에서 페이지2 상태를 제어할 수 있게 만들기.
   key: "app/pageNoAtom",
   default: (no) => 0
 });
 
 function Page1() {
+  //pageNoAtomFamily 1번으로 세팅
   const [no, setNo] = useRecoilState(pageNoAtomFamily(1));
   return (
     <>
@@ -25,6 +28,7 @@ function Page1() {
 }
 
 function Page2() {
+  //pageNoAtomFamily 2번으로 세팅
   const [no, setNo] = useRecoilState(pageNoAtomFamily(2));
   return (
     <>
@@ -41,6 +45,7 @@ function Page2() {
 }
 
 function Page3() {
+    //pageNoAtomFamily 3번으로 세팅
   const [no, setNo] = useRecoilState(pageNoAtomFamily(3));
   return (
     <>
@@ -57,7 +62,7 @@ function Page3() {
 }
 
 function Page4() {
-  //4페이지 숫자랑 1페이지 숫자 동일하게 적용 
+  //pageNoAtomFamily 4페이지는 1페이지 숫자 동일하게 적용 -> 데이터 공유
   const [no, setNo] = useRecoilState(pageNoAtomFamily(1));
   return (
     <>
