@@ -10,7 +10,7 @@ const pageCountAtomFamily = atomFamily({
 });
 
 function usePageCount(pageNo) {
-  // pageCountAtomFamily(pageNo) -> 페이지별 고유의 값 유지하기
+  // pageCountAtomFamily(pageNo) -> 페이지별 고유의 값 유지하기 !
   const [count, setCount] = useRecoilState(pageCountAtomFamily(pageNo));
   const increaseOne = () => setCount(count + 1);
   const decreaseOne = () => setCount(count - 1);
