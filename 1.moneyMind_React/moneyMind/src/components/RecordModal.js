@@ -1,8 +1,12 @@
 import { Button, Modal } from "@mui/material";
 import { useEffect, useState } from "react";
 import { myConfetti } from "../utils";
+//confetti 라이브러리 불러오기
+// npmjs.com/package/js-confetti
 
+// 완료한 숫자를 입력하면 그걸 받아서 기록 해주는 함수
 export function useRecordModalStatus() {
+
   const [opened, setOpened] = useState(false);
 
   const close = () => setOpened(false);
@@ -18,19 +22,21 @@ export function useRecordModalStatus() {
 export function RecordModal({
   status,
   msg,
-  initialQuantity = 0,
-  saveRecord: _saveRecord,
-  cancelRecord: _cancelRecord,
+  initialQuantity = 0,  //초기 개수
+  saveRecord: _saveRecord,  //숫자 저장해주는 값
+  cancelRecord: _cancelRecord,  //값을 입력 안 하고 취소하면 나타나는 값  
 }) {
   const [recordCount, setRecordCount] = useState(initialQuantity);
 
   useEffect(() => {
     setRecordCount(initialQuantity);
-  }, [initialQuantity]);
+  }, [initialQuantity]); //initialQuantity가 변할 때 마다 적용되는 useEffect
 
   const changeRecordCount = (addiCount) => {
     if (addiCount > 0) {
+      //0을 초과할 시 축하 이모티콘 같은게 펑  -> confetti
       myConfetti({
+        //세부 옵션 조정
         particleCount: addiCount * 10,
         spread: 160,
         // any other options from the global
@@ -39,10 +45,13 @@ export function RecordModal({
     }
 
     const newRecordCount =
+    //원래 기록된 카운트(recordCount) + 새로 입력받은 카운트(addiCount)를 더 해주기
+    // 0보다 작은게 true라면 0 유지 , 0보다 크다면 값 바꿔주기
       recordCount + addiCount < 0 ? 0 : recordCount + addiCount;
-    setRecordCount(newRecordCount);
+    setRecordCount(newRecordCount); //useState에 새 값으로 교체
   };
-
+  
+  // ?
   const saveRecord = () => {
     if (recordCount === 0) return;
 
@@ -52,10 +61,12 @@ export function RecordModal({
     _saveRecord(recordCount);
   };
 
+  // 세부 창(자식 컴포넌트)에서 취소를 누를 때 메뉴 창(부모 창)도 같이 취소되게 만들기
   const cancelRecord = () => {
     setRecordCount(initialQuantity);
     status.close();
 
+    //만약 _cancelRecord 있다면 _cancelRecord() 이걸 실행해라
     if (_cancelRecord) _cancelRecord();
   };
 
