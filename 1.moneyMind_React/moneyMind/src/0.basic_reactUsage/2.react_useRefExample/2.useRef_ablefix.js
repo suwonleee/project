@@ -1,7 +1,7 @@
 //숫자 배열을 기록하기 ex)
 // 0 : 5 삭제 +1 -1 0
 // 1 : 10 삭제 +1 -1 0
-
+// https://codepen.io/suwonleee/pen/ExpEzYW?editors=0010
 
 //useRef를 사용하기 위해선 이렇게 입력해준다.
 import React, { useState, useRef } from "https://cdn.skypack.dev/react";

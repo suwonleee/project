@@ -1,4 +1,5 @@
 // 입력 받은 숫자를 추가 기록하고, 삭제 +1 -1 로 인덱스도 기록
+//https://codepen.io/suwonleee/pen/ExpEzYW?editors=0010
 // example
 
 //기록된 숫자

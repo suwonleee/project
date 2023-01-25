@@ -1,5 +1,6 @@
 //숫자기록입력상자에 useRef를 이용하여 dom 조작
 //11.useState_domControl과 비교해서 보기
+//https://codepen.io/suwonleee/pen/WNKzWQK?editors=0010
 
 // 숫자를 입력해서 기록하기
 // v1 정답 예시 : 10, 20, 30
@@ -16,6 +17,8 @@ function App() {
   const [no, setNo] = useState("");
 
   const [recordedNos, setRecordedNos] = useState([10, 20, 30]);
+
+  //숫자를 입력 받으면 그 값에 접근, 저장하는 함수
   const saveNo = () => {	
     if (no === "") { //비어있을 경우
       alert("숫자를 입력해주세요.");
@@ -28,7 +31,7 @@ function App() {
   };
   
 
-  //const li = [1, 2, 3].map((el, index) => <li key={index}>{el}</li>);
+  //기존 리스트에 새로운 인덱스 값 추가해주기
   const li = recordedNos.map((el, index) => <li key={index}>{el}</li>);
 
   return (
@@ -36,6 +39,8 @@ function App() {
       <form
         onSubmit={(e) => {
           e.preventDefault(); //폼이 전송되는 것을 막기.
+
+          //숫자를 입력 받으면 그 값에 접근, 저장하는 함수
           saveNo();	
           // prevent 막는다.
           // Default 기본적으로.
@@ -48,7 +53,8 @@ function App() {
         <input
           type="number"
           ref={noInputRef}	// 내가 만든 useRef를 장착 시키기. -> 특정 엘리먼트를 DOM 조작해주기 위해서
-          value={no}	
+          value={no}
+          //onChange 이벤트가 발생하면, e.target.value 값을 통하여 이벤트 객체에 담겨있는 현재의 텍스트 값을 읽어올 수 있습니다. 
           onChange={(e) => setNo(e.target.valueAsNumber)}
         />
         <button type="submit">기록</button>

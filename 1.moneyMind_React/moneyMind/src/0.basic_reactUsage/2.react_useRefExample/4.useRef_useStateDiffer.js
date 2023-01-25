@@ -1,5 +1,5 @@
 // useRef 와 useState 의 차이점을 확인하기 !
-
+// https://codepen.io/suwonleee/pen/wvxmbML?editors=0011
 //useRef는 리로드 되더라도 값의 변화만 가져간다 (저장 기억)
 //그리고 완전히 리로드 될 때 그 변화를 리로드 된 화면에 담는다.
 
