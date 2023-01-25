@@ -1,5 +1,5 @@
 // 한번의 함수 실행에서(한 스택에서), 여러번 실행된 useState 결과에 반영되는 방법
-
+//https://codepen.io/suwonleee/pen/mdjxaBp?editors=0010
 // ** Q. useState를 중복하여 사용하고 싶은 경우 어떻게 해야하나 ? 
 
 import React, { useState } from "https://cdn.skypack.dev/react";

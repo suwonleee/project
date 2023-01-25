@@ -1,5 +1,5 @@
 //onClick에 매개변수가 필요한 함수는 바로 연결할 수가 없습니다.
-
+//https://codepen.io/suwonleee/pen/zYLWyEv?editors=0010
 // ** Q. 어떤 함수는 매개변수가 필요 없는데 (fun1), 매개변수가 필요한 경우가 있다(fun2)
 
 

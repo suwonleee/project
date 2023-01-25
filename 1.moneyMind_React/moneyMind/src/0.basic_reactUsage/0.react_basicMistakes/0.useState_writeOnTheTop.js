@@ -1,5 +1,5 @@
 //useState 구문은 무조건 함수 제일 위쪽에 모아두어야 합니다.
-
+// https://codepen.io/suwonleee/pen/PoBRXKe?editors=0010
 // ** Q. useState를 함수 내에서 사용하고 싶은 경우.
 
 import React, { useState } from "https://cdn.skypack.dev/react";

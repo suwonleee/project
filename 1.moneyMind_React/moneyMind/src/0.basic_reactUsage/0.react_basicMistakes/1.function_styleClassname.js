@@ -1,4 +1,5 @@
 // 직접만든 컴포넌트에는 className, style 등이 작동하지 않습니다, 전달을 꼭 해줘야 한다 !!
+//https://codepen.io/suwonleee/pen/yLqKGod?editors=0010
 
 // ** Q. 첫번째 박스와는 다르게, 두번째 박스에는 스타일을 적용하고 싶은 경우
 
