@@ -12,6 +12,11 @@ function App() {
   // if문, for문, while 등 제어문 안쪽에 두지 말자.
   const [no, setNo] = useState(0);
   
+  // 클릭할 때 마다 + 1 되게 만들려면
+  // const addFunc = () => {setNo((no) => no + 5)}
+  // return <button onClick={addFunc}>숫자 : {no}</button>;
+
+
   return <button>숫자 : {no}</button>;
 }
 

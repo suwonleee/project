@@ -6,11 +6,12 @@
 import React, { useState } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
+//className 변수를 넣어줌으로써 함수 내부 컨트롤
 function Box({ className }) {
   return <div style={{width:100, height:100, backgroundColor:'red'}} className={className}></div>
 }
 
-//이렇게도 적용 가능합니다.
+//이렇게도 적용 가능합니다. 코드가 한 줄 더 들어가게 된다.
 // function Box({ props }) {
 //   const className = props.className;
 //   return <div style={{width:100, height:100, backgroundColor:'blue'}} className= {className}></div>

@@ -21,6 +21,7 @@ function App() {
     setAges((ages) => [...ages, ages.length + 1]);
   };
 
+//클릭했을 때 동작할 함수 지정해주기
   return <button onClick={onClick}>나이 : [{ages.join(', ')}]</button>;
 }
 
