@@ -1,6 +1,7 @@
 // useEffect를 사용하여 함수의 특정부분 재실행 방지
 // useEffect는 리랜더링시마다 딱 1번만 실행 되어야하는 경우
 
+//https://codepen.io/suwonleee/pen/ZEjxNLB?editors=0011
 // ** Q. 증가 버튼을 누르면 -> 'app이 1번 실행됨!' && 증가 + 1 되게 만들기  
 
 import React, { useState, useEffect } from "https://cdn.skypack.dev/react";

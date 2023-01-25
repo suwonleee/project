@@ -1,6 +1,8 @@
 // 타이팅이 늦어져야 하는 경우, useRef, useEffect 조합
 // ** Q. 최초에는 이름에 포커스가 되어있고 -> 증가 버튼을 누르면 -> 숫자가 증가 되면서 나이에 포커스가 잡히게 만들기
 
+//https://codepen.io/suwonleee/pen/XWBEwRg?editors=0010
+
 import React, {
   useState,
   useEffect,
