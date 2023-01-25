@@ -1,6 +1,8 @@
 // counter 가 늘어날 때마다, 표현 방식 다르게 변경하기
 // 짝수, 홀수, 8의 배수 
 
+//https://codepen.io/suwonleee/pen/vYaRPdL?editors=0010
+
 import React, { useState } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
@@ -14,13 +16,12 @@ function App() {
     </>
   );
 
+  // 8의 배수를 만족하면 함수가 동작하게 or(||) 조건에 넣어주기
   const noIsNot8MultipleDiv = no % 8 == 0 || (
     <>
       <hr />
       {/* 8의 배수가 아닐땐 */}
       <div>8의 배수가 아닙니다.</div>
-
-      {/* 8의 배수일 땐 이렇게 뒤에 아무것도 작성 안해도 된다. */}
     </>
   );
 
@@ -32,6 +33,7 @@ function App() {
       <button onClick={() => setNo(no + 1)}>증가</button>
       {/* 짝수 홀수 구분, 8의 배수 구분 추가 */}
       {noIsEvenDiv}
+      {/* 8의 배수 조건 추가 */}
       {noIsNot8MultipleDiv}
     </>
   )

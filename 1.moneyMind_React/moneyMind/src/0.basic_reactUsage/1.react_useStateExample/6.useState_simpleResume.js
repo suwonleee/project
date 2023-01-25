@@ -1,4 +1,5 @@
 //초가 지날 때마다, 1씩 늘어나는 타이머
+//https://codepen.io/suwonleee/pen/XWBEGVo?editors=0010
 //pause 나 resume 누르면 잠깐 멈췄다가, 다시 재개되게 만들기.
 
 import React, { useState } from "https://cdn.skypack.dev/react";

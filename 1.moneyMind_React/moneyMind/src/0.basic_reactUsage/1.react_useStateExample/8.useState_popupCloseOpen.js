@@ -1,5 +1,6 @@
 //팝업 열기 와 팝업 닫기 버튼을 누르면 각각 번갈아가며 나오게 만들기
 // 그리고 가운데 border 네모도 사라지게
+//https://codepen.io/suwonleee/pen/ZEjxPxq?editors=0010
 
 import React, { useState } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
@@ -16,7 +17,7 @@ function App() {
 
       {/* 위 두줄을 밑에 한줄로 요약할 수 있다. */}
       <button onClick={() => setPopupVisible(!popupVisible)}>
-        팝업{popupVisible ? "닫기" : "열기"}
+        팝업{popupVisible ? " 닫기" : " 열기"}
       </button>
       <hr />
       {`popupVisible : ${popupVisible}`}

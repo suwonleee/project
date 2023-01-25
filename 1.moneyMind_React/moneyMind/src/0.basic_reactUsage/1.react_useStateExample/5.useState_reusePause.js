@@ -1,5 +1,6 @@
 // useState만 이용해서 재사용 방지하고, 한번만 나왔다가 들어가는 팝업 활용
 
+//https://codepen.io/suwonleee/pen/oNMqVpN?editors=0010
 // ** Q. "팝업 " 한번 나왔다가 들어감 -> 몇초 나왔다가 사라지기 & 최초 한번만.
 
 import React, { useState } from "https://cdn.skypack.dev/react";

@@ -1,6 +1,7 @@
 //숫자기록입력상자에 useState 이용하여 dom 조작
 // 1.useRef_memory 와 비교해서 보기
 
+//https://codepen.io/suwonleee/pen/KKBoEre?editors=0010
 // ** Q. 숫자를 입력해서 기록하기
 // v1 정답 예시 : 10, 20, 30
 // v2 정답 예시 : li로 표기된 10, 20, 30
