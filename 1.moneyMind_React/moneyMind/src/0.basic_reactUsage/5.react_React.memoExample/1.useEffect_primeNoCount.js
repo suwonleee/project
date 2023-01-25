@@ -1,6 +1,7 @@
 // useEffect로 PrimeNosCount 컴포넌트 효율적으로 구현
 // ** Q. 1부터 100사이에 / 200사이에/ 300사이에/ {엄청 큰 수}사이에 존재하는 수 세어주기.
 // 그런데 -> useEffect로 이미 계산 끝난거 다시 작동 안하게 만들기.
+//https://codepen.io/suwonleee/pen/qByoGPY?editors=0011
 
 
 import React, { useState, useEffect } from "https://cdn.skypack.dev/react";

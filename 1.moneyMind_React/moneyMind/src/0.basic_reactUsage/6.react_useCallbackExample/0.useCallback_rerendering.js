@@ -1,5 +1,5 @@
 // useCallback 으로 어이없는 리랜더링 막기
-
+//https://codepen.io/suwonleee/pen/qByoGpK?editors=0011
 // ** 버튼 1을 누르면 함수가 리랜더링 되고, 버튼 2를 누르면 리랜더링 되지 않게 만들기
 
 import React, { useState, useCallback } from "https://cdn.skypack.dev/react";

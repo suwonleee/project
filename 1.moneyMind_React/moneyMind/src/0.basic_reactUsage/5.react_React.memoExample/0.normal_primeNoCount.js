@@ -1,6 +1,7 @@
 // 실행이 오래걸리는 PrimeNosCount 컴포넌트 구현
 // ** Q. 1부터 100사이에 / 200사이에/ 300사이에/ {엄청 큰 수}사이에 존재하는 수 세어주기.
 
+//https://codepen.io/suwonleee/pen/wvxmbrv?editors=0010
 import React, { useState } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
