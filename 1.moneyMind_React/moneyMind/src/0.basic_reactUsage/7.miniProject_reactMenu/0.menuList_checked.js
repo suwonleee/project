@@ -18,7 +18,7 @@ function OrderMainFood({ setMainFoodCount, mainFoodCount }) {
         </button>
         <button
           onClick={() =>
-          
+            // 감소 버튼을 놀렀을 때 1인 경우 결과값을 1로, 그 외엔 -1씩 해주기 
             setMainFoodCount(mainFoodCount == 1 ? 1 : mainFoodCount - 1)
           }
         >
@@ -29,6 +29,9 @@ function OrderMainFood({ setMainFoodCount, mainFoodCount }) {
   );
 }
 
+//콘솔에 `OrderMainFood 실행됨` 이 출력.
+// 하지만 React.memo 덕분에 재실행되진 않는다.
+// 즉, 메인 관련된 숫자가 변화할 때만 재실행된다.
 const MemoizedOrderMainFood = React.memo(OrderMainFood);
 
 function OrderOptions({
@@ -39,22 +42,26 @@ function OrderOptions({
   optionCheckeds,
   toggleOptionCheck
 }) {
+  //옵션의 조건이 바뀔 때마다 실행된다.
   console.log(`OrderOptions 실행됨`);
 
   return (
     <>
       <h2>
+      {/* 옵션은 선택된 카운트 / 전체 길이 */}
         옵션 ({selectedCount} / {options.length})
       </h2>
       <span
+      // 전체 선택 토글 버튼
         onClick={toggleAllChecked}
-        style={{ paddingLeft: 30, userSelect: "none" }}
+        style={{ paddingLeft: 30, userSelect: "none"}}
       >
         {btnAllChecked ? "[x]" : "[ ]"} 전체선택
       </span>
       <ul>
         {options.map((option, index) => (
           <li
+          // ** userSelect: "none"으로 설정하면 클릭 / 드래그 사용이 되지 않는다.
             style={{ userSelect: "none", cursor: "pointer" }}
             key={option}
             onClick={() => toggleOptionCheck(index)}
@@ -86,6 +93,7 @@ function Order() {
     new Array(options.length).fill(false)
   );
 
+  //
   const toggleOptionCheck = useCallback(
     (index) => {
       const newOptionCheckeds = optionCheckeds.map((el, _index) =>
