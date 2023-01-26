@@ -22,8 +22,13 @@ function Sub({ no1, no2, calculateFunc }) {
 
 let AppCallCount = 0;
 
+
 const MemoizedSub = React.memo(Sub);
 
+
+//함수를 한번만 불러와서 재실행을 막기 위해선, 이렇게 밖에서 실행 해주면 된다.
+// const calculateFunc = useCallback((a, b) => a + b + no1, [no1]);
+//그렇지만, 함수 내부에서 새로운 변수를 받는 경우엔 ??!?
 function App() {
   AppCallCount++;
   console.log(`App이 ${AppCallCount}번 실행됨!`);
@@ -31,7 +36,8 @@ function App() {
   const [no1, setNo1] = useState(0);
   const [no2, setNo2] = useState(0);
 
-  //useCallback 은 useMemo랑 비슷
+  // 그냥 함수로 작성했으면 매번 재실행된다 
+  // ** useCallback 은 useMemo랑 비슷, 함수를 기억하고 실행한다.
   //no1 이 바뀌면 함수 리랜더링
   //no2 는 바뀌어도 useCallback 은 신경을 안 쓴다.
   const calculateFunc = useCallback((a, b) => a + b + no1, [no1]);
