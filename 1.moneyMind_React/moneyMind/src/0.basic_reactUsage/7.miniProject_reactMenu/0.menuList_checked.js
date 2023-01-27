@@ -6,6 +6,7 @@ import React, {
 } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
+// ! 메인 주문 조건 관련
 function OrderMainFood({ setMainFoodCount, mainFoodCount }) {
   console.log(`OrderMainFood 실행됨`);
 
@@ -29,11 +30,13 @@ function OrderMainFood({ setMainFoodCount, mainFoodCount }) {
   );
 }
 
-//콘솔에 `OrderMainFood 실행됨` 이 출력.
+// * 콘솔에 `OrderMainFood 실행됨` 이 출력.
 // 하지만 React.memo 덕분에 재실행되진 않는다.
 // 즉, 메인 관련된 숫자가 변화할 때만 재실행된다.
 const MemoizedOrderMainFood = React.memo(OrderMainFood);
 
+
+// ! *** 주문 조건 관련.
 function OrderOptions({
   selectedCount,
   options,
@@ -77,6 +80,7 @@ function OrderOptions({
 
 const MemoizedOrderOptions = React.memo(OrderOptions);
 
+// ! *** 주문 관련된 파트.
 function Order() {
   const [mainFoodCount, setMainFoodCount] = useState(1);
 
@@ -93,7 +97,7 @@ function Order() {
     new Array(options.length).fill(false)
   );
 
-  //
+  // * 체크하는 토글 옵션
   const toggleOptionCheck = useCallback(
     (index) => {
       const newOptionCheckeds = optionCheckeds.map((el, _index) =>
@@ -103,16 +107,18 @@ function Order() {
     },
     [optionCheckeds]
   );
-
+  // * 전체 체크 옵션 
   const btnAllChecked = useMemo(() => optionCheckeds.every((el) => el), [
     optionCheckeds
   ]);
 
+  // * 체크 한 토글 체크
   const selectedCount = useMemo(
     () => optionCheckeds.filter((el) => el).length,
     [optionCheckeds]
   );
 
+  // * 전부 다 체크 된 경우
   const toggleAllChecked = useCallback(() => {
     if (btnAllChecked) {
       // 전부 체크해제 해야함
@@ -153,6 +159,7 @@ function Order() {
   );
 }
 
+// ! *** 앱 시작
 function App() {
   return (
     <>
