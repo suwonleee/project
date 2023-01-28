@@ -54,13 +54,9 @@ function OrderOptions({
       {/* 옵션은 선택된 카운트 / 전체 길이 */}
         옵션 ({selectedCount} / {options.length})
       </h2>
-      <span
-      // 전체 선택 토글 버튼
-        onClick={toggleAllChecked}
-        style={{ paddingLeft: 30, userSelect: "none"}}
-      >
-        {btnAllChecked ? "[x]" : "[ ]"} 전체선택
-      </span>
+      <label style={{ paddingLeft: 30, userSelect: "none" }}>
+        <input type="checkbox" checked={btnAllChecked} onChange={toggleAllChecked} /> 전체선택
+      </label>
       <ul>
         {options.map((option, index) => (
           <li
@@ -69,8 +65,10 @@ function OrderOptions({
             key={option}
             onClick={() => toggleOptionCheck(index)}
           >
-            {optionCheckeds[index] ? "[x]" : "[ ]"}
-            {option}
+            <label>
+              <input type="checkbox" checked={optionCheckeds[index]} onChange={() => toggleOptionCheck(index)} />
+              {option}
+            </label>
           </li>
         ))}
       </ul>
@@ -79,6 +77,25 @@ function OrderOptions({
 }
 
 const MemoizedOrderOptions = React.memo(OrderOptions);
+function OrderDelivery({deliveryType, setDeliveryType}) {
+  console.log(`OrderDelivery 실행됨`);
+  
+  return <>
+    <h2>배달옵션</h2>
+    <label>
+      <input type="radio" name="delivery-type" checked={deliveryType == '직접수령'} onChange={() => setDeliveryType('직접수령')} />
+      직접수령
+    </label>
+    
+    <label>
+      <input type="radio" name="delivery-type" checked={deliveryType == '배달'} onChange={() => setDeliveryType('배달')} />
+      배달
+    </label>
+  </>
+}
+const MemoizedOrderDelivery = React.memo(OrderDelivery);
+
+
 
 // ! *** 주문 관련된 파트.
 function Order() {
@@ -131,6 +148,8 @@ function Order() {
     }
   }, [optionCheckeds]);
 
+  const [deliveryType, setDeliveryType] = useState('직접수령');
+
   return (
     <>
       <h1>음식주문</h1>
@@ -155,6 +174,7 @@ function Order() {
         btnAllChecked={btnAllChecked}
         toggleOptionCheck={toggleOptionCheck}
       />
+      <MemoizedOrderDelivery deliveryType={deliveryType} setDeliveryType={setDeliveryType} />
     </>
   );
 }
