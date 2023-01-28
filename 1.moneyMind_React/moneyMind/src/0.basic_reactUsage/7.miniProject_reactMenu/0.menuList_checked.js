@@ -76,6 +76,7 @@ function OrderOptions({
   );
 }
 
+//새로 추가된 코드
 const MemoizedOrderOptions = React.memo(OrderOptions);
 function OrderDelivery({deliveryType, setDeliveryType}) {
   console.log(`OrderDelivery 실행됨`);
@@ -148,6 +149,7 @@ function Order() {
     }
   }, [optionCheckeds]);
 
+  // 직접 수령 여부 확인.
   const [deliveryType, setDeliveryType] = useState('직접수령');
 
   return (
@@ -174,6 +176,7 @@ function Order() {
         btnAllChecked={btnAllChecked}
         toggleOptionCheck={toggleOptionCheck}
       />
+      {/* 직접 수령 여부 데이터 */}
       <MemoizedOrderDelivery deliveryType={deliveryType} setDeliveryType={setDeliveryType} />
     </>
   );
