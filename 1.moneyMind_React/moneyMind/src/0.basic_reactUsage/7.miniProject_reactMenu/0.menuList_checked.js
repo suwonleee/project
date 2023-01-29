@@ -76,8 +76,9 @@ function OrderOptions({
   );
 }
 
-//새로 추가된 코드
+// 배달 옵션 관련 코드
 const MemoizedOrderOptions = React.memo(OrderOptions);
+//배달 코드가 실행됐을 때  console.log 가 작동한다.
 function OrderDelivery({deliveryType, setDeliveryType}) {
   console.log(`OrderDelivery 실행됨`);
   
