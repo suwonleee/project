@@ -36,7 +36,7 @@ function OrderMainFood({ setMainFoodCount, mainFoodCount }) {
 const MemoizedOrderMainFood = React.memo(OrderMainFood);
 
 
-// ! *** 주문 조건 관련.
+// ! 주문 조건 관련.
 function OrderOptions({
   selectedCount,
   options,
@@ -99,7 +99,7 @@ const MemoizedOrderDelivery = React.memo(OrderDelivery);
 
 
 
-// ! *** 주문 관련된 파트.
+// ! 주문 관련된 파트.
 function Order() {
   const [mainFoodCount, setMainFoodCount] = useState(1);
 
@@ -183,7 +183,7 @@ function Order() {
   );
 }
 
-// ! *** 앱 시작
+// ! 앱 시작
 function App() {
   return (
     <>
