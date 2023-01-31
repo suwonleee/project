@@ -19,6 +19,10 @@ export function useRecordModalStatus() {
   };
 }
 
+// 함수에 {} 를 넣는 경우는 두개를 같다고 생각하면 된다.
+// function({isActive}) 
+// function (arg) { const isActive = args.isActive;} 
+
 export function RecordModal({
   status,
   msg,
