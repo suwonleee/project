@@ -22,12 +22,22 @@ function App() {
     setTodos(newTodos);
   };
   
-  // ! 어떤 값을 삭제할 땐 filter를 이용해준다.
+  // ! 삭제 ! 어떤 값을 삭제할 땐 filter를 이용해준다.
   const removeTodo = (index) => {
     // todo filter 활용법을 외워두기 !!!
     const newTodos = todos.filter((_, _index) => _index != index);
     setTodos(newTodos);
   };
+
+  // ! 수정 ! 어떤 값을 삭제할 땐 filter를 이용해준다.
+  const modifyTodo = (index, newContent) => {
+    // todo map 활용법을 외워두기 !!!
+    const newTodos = todos.map((_, _index) => _index != index ? todo : {
+      ...todo, content: newContent
+    } );
+    setTodos(newTodos);
+  };
+
 
   const onBtnAddTodoClick = () => {
     addTodo("안녕");
@@ -38,10 +48,16 @@ function App() {
     removeTodo(1);
   };
 
+  const onBtnModifyTodoClick = () => {
+    //세번째 인덱스를 삭제
+    modifyTodo(2, "값이 바뀐다면 여기에");
+  };
+
   return (
     <>
       <button onClick={onBtnAddTodoClick}>추가</button>
       <button onClick={onBtnDeleteTodoClick}>삭제</button>
+      <button onClick={onBtnModifyTodoClick}>수정</button>
       <hr />
       <ul>
         {todos.map((todo, index) => (
