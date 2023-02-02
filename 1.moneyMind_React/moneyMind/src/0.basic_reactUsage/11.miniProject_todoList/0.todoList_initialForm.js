@@ -1,8 +1,35 @@
 // !  새 할일 폼 만들기
-//https://codepen.io/suwonleee/pen/ZEjVOQZ?editors=0010
+//
+//https://codepen.io/suwonleee/pen/LYBMRQr?editors=0010
 
 import React, { useState, useRef } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
+
+//! 커스텀 훅으로 TodoList, TodoListItem 컴포넌트로 분리
+function TodoListItem({todo}) {
+  return (
+    
+    <li>
+      {todo.id}
+      &nbsp;
+      {todo.regDate}
+      &nbsp;
+      {todo.content}
+    </li>
+  )
+}
+
+function TodoList({ todosState }) {
+  return (
+    <ul>
+      {todosState.todos.map((todo, index) => (
+        // 유니크 한 값(todo)이 없는 경우는 index로 조절하면 된다.
+        <TodoListItem key={todo.id} todo={todo} index={index} />
+      ))}
+    </ul>
+  )
+}
+
 
 //! 할 일 폼 만들기
 function NewTodoForm({todosState}) {
@@ -49,13 +76,15 @@ function TodoApp({ todosState }) {
     {/* 새로 만든 폼을 적용 */}
       <NewTodoForm todosState={todosState} />
       <hr />
-      <ul>
+      {/* //todo 커스텀 훅을 여기서 받아와 보여줍니다.   */}
+      <TodoList todosState={todosState} />
+      {/* 원래 코드 <ul>
         {todosState.todos.map((todo, index) => (
           <li key={index}>
             {todo.id} {todo.regDate} {todo.content}
           </li>
         ))}
-      </ul>
+      </ul> */}
     </>
   );
 }
@@ -71,7 +100,10 @@ function useTodosState() {
     const newTodo = {
       id,
       content: newContent,
-      regDate: "2022-04-19 12:12:12"
+
+      // todo 새로 지정한 함수를 활용
+      // 날짜를 문자 형태로 바로 적용 
+      regDate: dateToStr(new Date())
     };
 
     const newTodos = [...todos, newTodo];
@@ -109,3 +141,26 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
+
+// ! 유틸리티 : 날짜, 시간을 받아와서 입력해주는 함수 
+// 날짜 객체 입력받아서 문장(yyyy-mm-dd hh:mm:ss)으로 반환한다.
+function dateToStr(d) {
+  const pad = (n) => {
+    return n < 10 ? "0" + n : n;
+  }
+
+  return (
+    d.getFullYear() +
+    "-" +
+    pad(d.getMonth() + 1) +
+    "-" +
+    pad(d.getDate()) +
+    " " +
+    pad(d.getHours()) +
+    ":" +
+    pad(d.getMinutes()) +
+    ":" +
+    pad(d.getSeconds())
+  );
+}
