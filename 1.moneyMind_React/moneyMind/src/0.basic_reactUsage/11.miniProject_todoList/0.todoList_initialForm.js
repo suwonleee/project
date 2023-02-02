@@ -6,6 +6,7 @@ import React, { useState, useRef } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
 //! 커스텀 훅으로 TodoList, TodoListItem 컴포넌트로 분리
+// TodoListItem 에서는 구체적인 값을 지정
 function TodoListItem({todo}) {
   return (
     
@@ -19,7 +20,9 @@ function TodoListItem({todo}) {
   )
 }
 
+//! 
 function TodoList({ todosState }) {
+  //todoState 는 useTodosState(주요 기능 함수 모아놓은거)를 받은 것
   return (
     <ul>
       {todosState.todos.map((todo, index) => (
@@ -105,8 +108,10 @@ function useTodosState() {
       // 날짜를 문자 형태로 바로 적용 
       regDate: dateToStr(new Date())
     };
-
+    
+    //기존 todos에 newTodo 추가, 그리고 담아주기
     const newTodos = [...todos, newTodo];
+    //그 값을 다음으로 넘겨주기
     setTodos(newTodos);
   };
 
