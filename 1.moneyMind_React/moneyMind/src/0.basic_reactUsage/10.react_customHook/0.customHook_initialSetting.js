@@ -1,4 +1,5 @@
 // https://codepen.io/suwonleee/pen/jOpXWpr?editors=0010
+// ! 할일리스트앱을 상위(로직) 컴포넌트와 하위(UI) 컴포넌트로 분리
 import React, { useState, useRef } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 

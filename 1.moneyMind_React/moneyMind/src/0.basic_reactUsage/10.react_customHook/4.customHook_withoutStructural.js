@@ -1,23 +1,26 @@
-//https://codepen.io/suwonleee/pen/RwBErBO?editors=0010
-//!로직중에서도 UI 컴포넌트와 밀접한 것들은 UI 컴포넌트로 이동
+// ! 자식이 커스텀 상태를 구조분해 하지않고, 바로 사용
+//https://codepen.io/suwonleee/pen/YzjdqJw?editors=0010
+console.clear();
 
 import React, { useState, useRef } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
-function TodoApp({ addTodo, removeTodo, modifyTodo, todos }) {
-  //! 함수 내부로 이동 (위에 변수에는 진짜 필요한 것만 지정)
-  // 버튼 안에서 실행해야하기 때문에 함수 안에서 지정
+function TodoApp({ todosState }) {
+  //! 이전 코드
+  //  const { addTodo, removeTodo, modifyTodo, todos } = todosState;
 
+  // todo 또 이걸 재지정 할 필요 없이 그대로 사용해도 지장 없다.
   const onBtnAddTodoClick = () => {
-    addTodo("안녕");
+    //    addTodo("안녕"); < -- 기존 코드
+    todosState.addTodo("안녕");
   };
 
   const onBtnDeleteTodoClick = () => {
-    removeTodo(1);
+    todosState.removeTodo(1);
   };
 
   const onBtnModifyTodoClick = () => {
-    modifyTodo(1, "ㅋㅋㅋ");
+    todosState.modifyTodo(1, "ㅋㅋㅋ");
   };
 
   return (
@@ -27,7 +30,7 @@ function TodoApp({ addTodo, removeTodo, modifyTodo, todos }) {
       <button onClick={onBtnModifyTodoClick}>수정</button>
       <hr />
       <ul>
-        {todos.map((todo, index) => (
+        {todosState.todos.map((todo, index) => (
           <li key={index}>
             {todo.id} {todo.regDate} {todo.content}
           </li>
@@ -37,7 +40,7 @@ function TodoApp({ addTodo, removeTodo, modifyTodo, todos }) {
   );
 }
 
-function App() {
+function useTodosState() {
   const [todos, setTodos] = useState([]);
   const lastTodoIdRef = useRef(0);
 
@@ -66,19 +69,20 @@ function App() {
     setTodos(newTodos);
   };
 
+  return {
+    todos,
+    addTodo,
+    modifyTodo,
+    removeTodo
+  };
+}
+
+function App() {
+  const todosState = useTodosState();
+
   return (
     <>
-    {/* <TodoApp onBtnAddTodoClick={onBtnAddTodoClick} onBtnDeleteTodoClick={onBtnDeleteTodoClick} onBtnModifyTodoClick={onBtnModifyTodoClick} todos={todos} /> */}
-
-    {/* //* 원래 코드는 위와 같이 작성 */}
-
-    {/* //*그러나, 위에는 추상적인 함수를 주고, 특정 디자인에 관련된 함수들은 밑에 작성 */}
-      <TodoApp
-        addTodo={addTodo}
-        removeTodo={removeTodo}
-        modifyTodo={modifyTodo}
-        todos={todos}
-      />
+      <TodoApp todosState={todosState} />
     </>
   );
 }

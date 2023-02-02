@@ -1,13 +1,10 @@
-//https://codepen.io/suwonleee/pen/RwBErBO?editors=0010
-//!로직중에서도 UI 컴포넌트와 밀접한 것들은 UI 컴포넌트로 이동
-
+//https://codepen.io/suwonleee/pen/vYavGBq?editors=0010
+// ! 커스텀 훅으로 UI와 관계없는 핵심 로직과 상태들을 묶을 수 있다
 import React, { useState, useRef } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
+//상태를 받아서 보여주는 역할
 function TodoApp({ addTodo, removeTodo, modifyTodo, todos }) {
-  //! 함수 내부로 이동 (위에 변수에는 진짜 필요한 것만 지정)
-  // 버튼 안에서 실행해야하기 때문에 함수 안에서 지정
-
   const onBtnAddTodoClick = () => {
     addTodo("안녕");
   };
@@ -36,8 +33,10 @@ function TodoApp({ addTodo, removeTodo, modifyTodo, todos }) {
     </>
   );
 }
-
-function App() {
+// ! add / modify / remove 를 묶어준다.
+// todo 사실 세 함수는 비슷한 역할을 하고 있었다. 핵심 로직을 하는 역할. 그래서 묶어준다.
+// 커스텀훅은 use___State 로 이름 짓는거 추천 ! 
+function useTodosState() {
   const [todos, setTodos] = useState([]);
   const lastTodoIdRef = useRef(0);
 
@@ -65,14 +64,26 @@ function App() {
     const newTodos = todos.filter((_, _index) => _index != index);
     setTodos(newTodos);
   };
+  
+  // todo 묶어준 녀석들을 출력해주기
+  return {
+    todos,
+    addTodo,
+    modifyTodo,
+    removeTodo
+  }
+}
 
+//App은 상태들을 만드는 역할
+function App() {
+  //! 로직 부분
+  // todo 저렇게 만들어준 함수를 App 안에서 지정해주어 사용
+  const {addTodo, removeTodo, modifyTodo, todos} = useTodosState();
+
+
+  //! UI 부분
   return (
     <>
-    {/* <TodoApp onBtnAddTodoClick={onBtnAddTodoClick} onBtnDeleteTodoClick={onBtnDeleteTodoClick} onBtnModifyTodoClick={onBtnModifyTodoClick} todos={todos} /> */}
-
-    {/* //* 원래 코드는 위와 같이 작성 */}
-
-    {/* //*그러나, 위에는 추상적인 함수를 주고, 특정 디자인에 관련된 함수들은 밑에 작성 */}
       <TodoApp
         addTodo={addTodo}
         removeTodo={removeTodo}
