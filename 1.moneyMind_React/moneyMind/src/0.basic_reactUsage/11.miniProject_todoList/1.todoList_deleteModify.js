@@ -1,31 +1,58 @@
 // !  새 할일 폼에 삭제 추가하기 툴
+//https://codepen.io/suwonleee/pen/rNrPOzE?editors=0010
+
+console.clear();
 
 import React, { useState, useRef } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
 
-function TodoListItem({todosState, todo, index}) {
+function TodoListItem({ todosState, todo, index }) {
+  //수정 모드를 사용해주기 위해 useState 활용
+  const [editMode, setEditMode] = useState(false);
+
+  // ! 삭제 기능 
   const removeTodo = () => {
+    //todosState로 인덱스 받아와주기
     todosState.removeTodo(index);
-  }
-  
+  };
+
+  // ! 수정 기능 활용 
+  const showEdit = () => {
+    setEditMode(true);
+  };
+
   return (
     <li>
       {todo.id}
       &nbsp;
       {todo.regDate}
       &nbsp;
-      {todo.content}
+      {/* // ! 수정 기능을 클릭하지 않은 경우, 버튼이 보이게 */}
+      {editMode || (
+        <>
+          {todo.content}
+          &nbsp;
+          <button onClick={showEdit}>수정</button>
+        </>
+      )}
+      {/* // ! 수정 기능을 클릭한 경우, "수정모드" 라는 글자가 보이게 */}
+      {editMode && <>수정모드</>}
       &nbsp;
       <button onClick={removeTodo}>삭제</button>
     </li>
-  )
+  );
 }
 
 function TodoList({ todosState }) {
   return (
     <ul>
       {todosState.todos.map((todo, index) => (
-        <TodoListItem todosState={todosState} key={todo.id} todo={todo} index={index} />
+        <TodoListItem
+          todosState={todosState}
+          key={todo.id}
+          todo={todo}
+          index={index}
+        />
       ))}
     </ul>
   );
@@ -58,7 +85,7 @@ function NewTodoForm({ todosState }) {
         name="content"
         type="text"
         placeholder="할일을 입력해주세요."
-        />
+      />
       <input type="submit" value="추가" />
       <input type="reset" value="취소" />
     </form>
@@ -92,14 +119,18 @@ function useTodosState() {
     setTodos(newTodos);
   };
 
+  // ! 수정하기 기능 추가. 
   const modifyTodo = (index, newContent) => {
+    //수정할 땐 map 사용
     const newTodos = todos.map((todo, _index) =>
-                               _index != index ? todo : { ...todo, content: newContent }
-                              );
+      _index != index ? todo : { ...todo, content: newContent }
+    );
     setTodos(newTodos);
   };
 
+  //! 삭제하기 기능 추가
   const removeTodo = (index) => {
+    //삭제할 땐 filter 사용
     const newTodos = todos.filter((_, _index) => _index != index);
     setTodos(newTodos);
   };
