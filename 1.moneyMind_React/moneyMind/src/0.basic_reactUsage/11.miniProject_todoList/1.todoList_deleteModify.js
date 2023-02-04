@@ -31,6 +31,8 @@ function TodoListItem({ todosState, todo, index }) {
   // ! 에디트 모드를 취한다면
   const cancelEdit = () => {
     setEditMode(false);
+    //todo.content는 useState의 초기값. 그러니 취소해도 초기값으로
+    setEditedContent(todo.content);
   }
 
 
@@ -40,7 +42,7 @@ function TodoListItem({ todosState, todo, index }) {
       &nbsp;
       {todo.regDate}
       &nbsp;
-      {/* // ! 수정 기능을 클릭하지 않은 경우, 버튼이 보이게 */}
+      {/* // ! 수정 기능을 클릭하지 않은 경우, 버튼이 보이게 -> editMode 가 false */}
       {editMode || (
         <>
           {todo.content}
@@ -48,7 +50,7 @@ function TodoListItem({ todosState, todo, index }) {
           <button onClick={showEdit}>수정</button>
         </>
       )}
-      {/* // ! 수정 기능을 클릭한 경우, 텍스트 입력 폼 보이고, 그 안에 원래 값/변경 값을 담아준다. */}
+      {/* // ! 수정 기능을 클릭한 경우, 텍스트 입력 폼 보이고, 그 안에 원래 값/변경 값을 담아준다. -> editMode 가 true */}
       {editMode && <>
         {/* (e) => setEditedContent(e.target.value)로 입력 폼에 값 전달되게 만들기 */}
         <input type="text" placeholder="할일을 입력해주세요." value={editedContent}
