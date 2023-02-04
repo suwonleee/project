@@ -1,7 +1,5 @@
 // !  새 할일 폼에 삭제 추가하기 툴
-//https://codepen.io/suwonleee/pen/rNrPOzE?editors=0010
-
-console.clear();
+//https://codepen.io/suwonleee/pen/RwBvQdP?editors=0010
 
 import React, { useState, useRef } from "https://cdn.skypack.dev/react";
 import ReactDOM from "https://cdn.skypack.dev/react-dom";
@@ -9,6 +7,10 @@ import ReactDOM from "https://cdn.skypack.dev/react-dom";
 function TodoListItem({ todosState, todo, index }) {
   //수정 모드를 사용해주기 위해 useState 활용
   const [editMode, setEditMode] = useState(false);
+
+  // 에디트 모드에 있는 콘텐츠 값을 담아주는 useState
+  //todo.content  -> useState초기 값을 원래 들어있는 값으로 설정
+  const [editedContent, setEditedContent] = useState(todo.content);
 
   // ! 삭제 기능 
   const removeTodo = () => {
@@ -46,9 +48,12 @@ function TodoListItem({ todosState, todo, index }) {
           <button onClick={showEdit}>수정</button>
         </>
       )}
-      {/* // ! 수정 기능을 클릭한 경우, 텍스트 입력 폼  보이고, 완료/ 취소 버튼 보이게 */}
+      {/* // ! 수정 기능을 클릭한 경우, 텍스트 입력 폼 보이고, 그 안에 원래 값/변경 값을 담아준다. */}
       {editMode && <>
-        <input type="text" placeholder="할일을 입력해주세요." />
+        {/* (e) => setEditedContent(e.target.value)로 입력 폼에 값 전달되게 만들기 */}
+        <input type="text" placeholder="할일을 입력해주세요." value={editedContent}
+        // e.target.value 로 입력 폼 값에 접근하여 setEditedContent로 저장
+        onChange={(e) => setEditedContent(e.target.value)} />
         &nbsp;
         <button onClick={commitEdit}>수정완료</button>
         &nbsp;
