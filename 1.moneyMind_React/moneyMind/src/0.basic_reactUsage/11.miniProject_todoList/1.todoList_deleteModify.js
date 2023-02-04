@@ -21,6 +21,17 @@ function TodoListItem({ todosState, todo, index }) {
     setEditMode(true);
   };
 
+  // ! 에디트 모드를 사용한다면 
+  const commitEdit = () => {
+    setEditMode(false);
+  }
+
+  // ! 에디트 모드를 취한다면
+  const cancelEdit = () => {
+    setEditMode(false);
+  }
+
+
   return (
     <li>
       {todo.id}
@@ -35,8 +46,14 @@ function TodoListItem({ todosState, todo, index }) {
           <button onClick={showEdit}>수정</button>
         </>
       )}
-      {/* // ! 수정 기능을 클릭한 경우, "수정모드" 라는 글자가 보이게 */}
-      {editMode && <>수정모드</>}
+      {/* // ! 수정 기능을 클릭한 경우, 텍스트 입력 폼  보이고, 완료/ 취소 버튼 보이게 */}
+      {editMode && <>
+        <input type="text" placeholder="할일을 입력해주세요." />
+        &nbsp;
+        <button onClick={commitEdit}>수정완료</button>
+        &nbsp;
+        <button onClick={cancelEdit}>수정취소</button>
+      </>}
       &nbsp;
       <button onClick={removeTodo}>삭제</button>
     </li>
