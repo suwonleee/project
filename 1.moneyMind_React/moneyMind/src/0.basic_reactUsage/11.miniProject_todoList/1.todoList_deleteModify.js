@@ -9,8 +9,12 @@ function TodoListItem({ todosState, todo, index }) {
   const [editMode, setEditMode] = useState(false);
 
   // 에디트 모드에 있는 콘텐츠 값을 담아주는 useState
-  //todo.content  -> useState초기 값을 원래 들어있는 값으로 설정
+  // 코드 todo.content  -> useState초기 값을 원래 들어있는 값으로 설정
   const [editedContent, setEditedContent] = useState(todo.content);
+  
+  //useRef를 활용해여 수정 내역 반영하기
+  const editedContentInputRef = useRef(null);
+  
 
   // ! 삭제 기능 
   const removeTodo = () => {
@@ -18,17 +22,24 @@ function TodoListItem({ todosState, todo, index }) {
     todosState.removeTodo(index);
   };
 
-  // ! 수정 기능 활용 
+  // ! 수정 버튼 보여주기
   const showEdit = () => {
     setEditMode(true);
   };
 
   // ! 에디트 모드를 사용한다면 
   const commitEdit = () => {
+    if (editedContent.trim().length == 0) {
+      alert("할일을 입력해주세요.");
+      editedContentInputRef.current.focus();
+      return;
+    }
+
+    todosState.modifyTodo(index, editedContent.trim());
     setEditMode(false);
   }
 
-  // ! 에디트 모드를 취한다면
+  // ! 에디트 모드를 취소한다면
   const cancelEdit = () => {
     setEditMode(false);
     //todo.content는 useState의 초기값. 그러니 취소해도 초기값으로
@@ -53,9 +64,14 @@ function TodoListItem({ todosState, todo, index }) {
       {/* // ! 수정 기능을 클릭한 경우, 텍스트 입력 폼 보이고, 그 안에 원래 값/변경 값을 담아준다. -> editMode 가 true */}
       {editMode && <>
         {/* (e) => setEditedContent(e.target.value)로 입력 폼에 값 전달되게 만들기 */}
-        <input type="text" placeholder="할일을 입력해주세요." value={editedContent}
-        // e.target.value 로 입력 폼 값에 접근하여 setEditedContent로 저장
-        onChange={(e) => setEditedContent(e.target.value)} />
+        <input 
+          ref={editedContentInputRef}
+          type="text" 
+          placeholder="할일을 입력해주세요." 
+          value={editedContent}
+          // e.target.value 로 입력 폼 값에 접근하여 setEditedContent로 저장
+          onChange={(e) => setEditedContent(e.target.value)}
+        />
         &nbsp;
         <button onClick={commitEdit}>수정완료</button>
         &nbsp;
