@@ -20,12 +20,14 @@ const {
 } = MaterialUI;
 
 function App() {
+  //anchor라는 변수에 담아서 밑에 Drawer에서 사용.
   const anchor = "left";
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <Button variant="contained" onClick={() => setOpen(true)}>안녕</Button>
+      //! Drawer 코드 
       <Drawer anchor={anchor} open={open} onClose={() => setOpen(false)}>
         <List>
           <ListItem button>사과</ListItem>
