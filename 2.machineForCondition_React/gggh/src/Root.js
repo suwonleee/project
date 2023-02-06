@@ -26,8 +26,8 @@ function Root() {
     // 앱 테마
     palette: {
       primary: {
-        main: "#3C5973",
-        contrastText: "#f0f0f0",
+        main: "#A0BED9",
+        contrastText: "#0D0D0D",
       },
     },
   });

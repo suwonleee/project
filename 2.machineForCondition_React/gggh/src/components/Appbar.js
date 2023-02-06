@@ -1,4 +1,4 @@
-// ! 아직 앱바 적용 안 함.
+// ! 아직 앱바 적용 안 함. -> 기존 앱바를 없애고 적용할지
 //내가 원하는 포맷의 material UI app bar
 //https://mui.com/material-ui/react-app-bar/
 
@@ -46,30 +46,12 @@ function ResponsiveAppBar() {
   };
 
   return (
-    // !풀스크린
+    // ! 풀스크린 제목 아이콘
     <AppBar position="static">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              // 패딩같은 친구 mr
-              mr: 5,
-              display: { xs: 'none', md: 'flex' },
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            기계궁합 Full
-          </Typography>
-          
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          {/* //! 스몰 메뉴 햄버거 */}
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -94,7 +76,7 @@ function ResponsiveAppBar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
+              sx={{ flexGrow: 0,
                 display: { xs: 'block', md: 'none' },
               }}
             >
@@ -106,9 +88,45 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
-          {/* //! 어플 화면일 경우*/}
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
+
+          {/* //! 이게 풀스크린 메뉴  */}
+          <Box sx={{  flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+            {pagesKor.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'inherit', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+
+          {/* // ! 풀스크린 아이콘 */}
+          <AdbIcon sx={{  flexGrow: 0, mx: 'auto', display: { xs: 'none', md: 'flex' } }} />
+          {/* <Typography
+            variant="h6"
+            noWrap
+            component="a"
+            href="/"
+            sx={{
+              // 패딩같은 친구 mr
+              mr: 5,
+              display: { xs: 'none', md: 'flex' },
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+              color: 'inherit',
+              textDecoration: 'none',
+            }}
+          >
+            라지
+          </Typography> */}
+          
+          
+
+          {/* //! 스몰 아이콘/텍스트 */}
+          <AdbIcon sx={{ mx: 'auto', display: { xs: 'flex', md: 'none' }}} />
+          {/* <Typography
             variant="h5"
             noWrap
             component="a"
@@ -123,20 +141,10 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            기계궁합 Brief
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pagesKor.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
+            스몰
+          </Typography> */}
 
+          {/* //! 회원 메뉴 풀스크린, 작은 스크린 */}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
