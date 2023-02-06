@@ -22,12 +22,13 @@ function App() {
           <div className="flex-1 self-stretch flex justify-start">
             {location.pathname !== "/history" && (
               <NavLink className="select-none flex items-center" to="/history">
+              {/* to="/history" -> 를 사용해주면 history 페이지로 이동*/}
                 메뉴
               </NavLink>
             )}
             {location.pathname === "/history" && (
               <NavLink className="select-none flex items-center" to="/main">
-                뒤로가기
+                접기
               </NavLink>
             )}
           </div>
@@ -37,7 +38,18 @@ function App() {
           >
             기계 궁합
           </NavLink>
-          <div className="flex-1"></div>
+          <div className="flex-1 self-stretch flex justify-end">
+            {location.pathname !== "/history" && (
+              <NavLink className="select-none flex items-center" to="/history">
+                기록하기
+              </NavLink>
+            )}
+            {location.pathname === "/history" && (
+              <NavLink className="select-none flex items-center" to="/main">
+                메인으로
+              </NavLink>
+            )}
+          </div>
         </Toolbar>
       </AppBar>
       <Toolbar />
