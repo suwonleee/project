@@ -19,17 +19,10 @@ function App() {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          <div className="flex-1"></div>
-          <NavLink
-            to="/main"
-            className="font-bold select-none self-stretch flex items-center"
-          >
-            스쿼트 챌린지
-          </NavLink>
-          <div className="flex-1 self-stretch flex justify-end">
+          <div className="flex-1 self-stretch flex justify-start">
             {location.pathname !== "/history" && (
               <NavLink className="select-none flex items-center" to="/history">
-                히스토리
+                메뉴
               </NavLink>
             )}
             {location.pathname === "/history" && (
@@ -38,6 +31,13 @@ function App() {
               </NavLink>
             )}
           </div>
+          <NavLink
+            to="/main"
+            className="font-bold select-none self-stretch flex items-center"
+          >
+            기계 궁합
+          </NavLink>
+          <div className="flex-1"></div>
         </Toolbar>
       </AppBar>
       <Toolbar />
