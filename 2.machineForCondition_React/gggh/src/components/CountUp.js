@@ -1,4 +1,3 @@
-
 import { CountUp } from "countup.js";
 import { useEffect, useRef } from "react";
 //CountUp 라이브러리 활용하기
