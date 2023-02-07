@@ -1,9 +1,16 @@
-// ! 아직 앱바 적용 안 함. -> 기존 앱바를 없애고 적용할지
+// ! 아직 앱바 적용 안 함. -> 기존 앱바를 없애고 적용할지 
+// ! 아이콘을 정 가운데에 하고 싶은데 ! 잘 안된다 ㅜ 해결하기
+
 //내가 원하는 포맷의 material UI app bar
 //https://mui.com/material-ui/react-app-bar/
 
 //레퍼런스
 //https://www.the14f.com/
+
+//정가운데 맞추기 레퍼런스
+// 1분 코딩 : https://studiomeal.com/archives/197
+// 공식 문서 : https://mui.com/joy-ui/react-grid/#spacing
+//https://mui.com/material-ui/react-bottom-navigation/#fixed-positioning
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -20,7 +27,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pagesKor = ['노트북', '성능', '블로그'];
+const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
 //영어 페이지를 만든다면
 // const pagesEng = ['Products', 'Pricing', 'Blog'];
 
@@ -46,7 +53,6 @@ function ResponsiveAppBar() {
   };
 
   return (
-    // ! 풀스크린 제목 아이콘
     <AppBar position="static">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
@@ -103,7 +109,8 @@ function ResponsiveAppBar() {
           </Box>
 
           {/* // ! 풀스크린 아이콘 */}
-          <AdbIcon sx={{  flexGrow: 0, mx: 'auto', display: { xs: 'none', md: 'flex' } }} />
+          {/* 가운데로 보내주기 위해 position fixed와 양쪽 다 0으로 설정 */}
+          <AdbIcon sx={{  flexGrow: 0, mx: 'auto', position: 'fixed' , left: 0, right: 0, display: { xs: 'none', md: 'block' } }} />
           {/* <Typography
             variant="h6"
             noWrap
@@ -143,11 +150,12 @@ function ResponsiveAppBar() {
           >
             스몰
           </Typography> */}
+          
 
           {/* //! 회원 메뉴 풀스크린, 작은 스크린 */}
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , right: 20, display: { xs: 'flex', md: 'block' }}}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
