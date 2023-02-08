@@ -1,7 +1,7 @@
 //할일추가 폼 꾸미기
 //https://codepen.io/suwonleee/pen/gOjJGbz?editors=0010
 
-const { useState, useRef } = React;
+const { useState, useRef, useEffect } = React;
 
 import classNames from "https://cdn.skypack.dev/classnames";
 
@@ -14,7 +14,8 @@ const {
   Button,
   AppBar,
   Toolbar,
-  TextField
+  TextField,
+  Chip
 } = MaterialUI;
 
 function useTodosState() {
@@ -31,8 +32,8 @@ function useTodosState() {
       regDate: dateToStr(new Date())
     };
 
-    const newTodos = [...todos, newTodo];
-    setTodos(newTodos);
+    // 새로 정보가 들어오면 추가해주고 다음으로 넘겨주기
+    setTodos((todos) => [...todos, newTodo]);
   };
 
   // ! 수정하는 기능
@@ -62,6 +63,12 @@ function useTodosState() {
 function App() {
   const todosState = useTodosState();
 
+  //! 코드가 추가되어 들어온다면 여기에서 사용
+  useEffect(() => {
+    todosState.addTodo('운동');
+    todosState.addTodo('명상');
+    todosState.addTodo('공부');
+  }, [])
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -112,8 +119,8 @@ function App() {
           {todosState.todos.map((todo) => (
             <li key={todo.id} className="mt-10">
               <div className="flex gap-2">
-                <span>번호 : {todo.id}</span>
-                <span>번호 : {todo.regDate}</span>
+                <Chip label={`번호 : ${todo.id}`} variant="outlined" />
+                <Chip label={todo.regDate} color="primary" variant="outlined"/>
               </div>
               <div>
                 {todo.content}
