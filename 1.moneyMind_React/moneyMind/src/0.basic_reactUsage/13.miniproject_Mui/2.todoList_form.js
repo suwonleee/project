@@ -1,5 +1,5 @@
 //할일추가 폼 꾸미기
-//https://codepen.io/suwonleee/pen/RwBmggX?editors=0010
+//https://codepen.io/suwonleee/pen/gOjJGbz?editors=0010
 
 const { useState, useRef } = React;
 
@@ -106,7 +106,22 @@ function App() {
 
         <Button variant="contained">추가</Button>
       </form>
-      {todosState.todos.length}
+      {/* //! 할일 리스트 담아줄 것 만들기 */}
+      <div className="mt-4 px-4">
+        <ul>
+          {todosState.todos.map((todo) => (
+            <li key={todo.id} className="mt-10">
+              <div className="flex gap-2">
+                <span>번호 : {todo.id}</span>
+                <span>번호 : {todo.regDate}</span>
+              </div>
+              <div>
+                {todo.content}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
@@ -119,7 +134,7 @@ function Root() {
     },
     palette: {
       primary: {
-        main: "#ff8686",
+        main: "#0686",
         contrastText: "#ffffff"
       }
     }
