@@ -1,5 +1,5 @@
-//할일추가 폼 꾸미기
-//https://codepen.io/suwonleee/pen/gOjJGbz?editors=0010
+//할일추가 폼 꾸미고, 글 리스트 꾸미기.
+//https://codepen.io/suwonleee/pen/jOpjNrR?editors=0010
 
 const { useState, useRef, useEffect } = React;
 
@@ -15,7 +15,8 @@ const {
   AppBar,
   Toolbar,
   TextField,
-  Chip
+  Chip,
+  Box
 } = MaterialUI;
 
 function useTodosState() {
@@ -32,8 +33,8 @@ function useTodosState() {
       regDate: dateToStr(new Date())
     };
 
-    // 새로 정보가 들어오면 추가해주고 다음으로 넘겨주기
-    setTodos((todos) => [...todos, newTodo]);
+    // 새로 정보가 들어오면 맨 위에 추가해주기
+    setTodos((todos) => [newTodo, ...todos]);
   };
 
   // ! 수정하는 기능
@@ -65,10 +66,10 @@ function App() {
 
   //! 코드가 추가되어 들어온다면 여기에서 사용
   useEffect(() => {
-    todosState.addTodo('운동');
+    todosState.addTodo('운동\n스트레칭\n유산소\n상체\n하체\n볼륨 트레이닝');
     todosState.addTodo('명상');
     todosState.addTodo('공부');
-  }, [])
+  }, []);
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -104,6 +105,10 @@ function App() {
       <Toolbar />
       <form onSubmit={onSubmit} className="flex flex-col mt-4 px-4 gap-2">
         <TextField
+        // 텍스트 필드를 멀티라인으로 지정해주기
+          minRows={3}
+          maxRows={10}
+          multiline
           autoComplete="off"
           name="content"
           label="할일을 입력해주세요."
@@ -111,7 +116,7 @@ function App() {
           variant="outlined"
         />
 
-        <Button variant="contained">추가</Button>
+        <Button type="submit" variant="contained">추가</Button>
       </form>
       {/* //! 할일 리스트 담아줄 것 만들기 */}
       <div className="mt-4 px-4">
@@ -119,11 +124,18 @@ function App() {
           {todosState.todos.map((todo) => (
             <li key={todo.id} className="mt-10">
               <div className="flex gap-2">
-                <Chip label={`번호 : ${todo.id}`} variant="outlined" />
-                <Chip label={todo.regDate} color="primary" variant="outlined"/>
+              {/* todo 리스트 번호랑, 작성 날짜 꾸미기 pt-1 은 padding top */}
+                <Chip label={`번호 : ${todo.id}`} variant="outlined" className="!pt-1" />
+                <Chip label={todo.regDate} color="primary" variant="outlined" className="!pt-1"/>
               </div>
-              <div>
-                {todo.content}
+              {/* todo 리스트 콘텐츠 꾸미기. */}
+              {/* whitespace-pre-wrap leading-relaxed를 통해서 블락 내 엔터(enter, \n)기능 활성화 */}
+              <div className='mt-4 p-10 shadow rounded-[20px] 
+              whitespace-pre-wrap leading-relaxed'>
+                {/* 이렇게 박스를 지정해주고, 글씨 색상까지 바꿀 수 있다. */}
+                <Box component="span" sx={{color:'primary.main'}}>
+                  {todo.content}
+                </Box>
               </div>
             </li>
           ))}
@@ -141,7 +153,7 @@ function Root() {
     },
     palette: {
       primary: {
-        main: "#0686",
+        main: "#3C5973",
         contrastText: "#ffffff"
       }
     }
