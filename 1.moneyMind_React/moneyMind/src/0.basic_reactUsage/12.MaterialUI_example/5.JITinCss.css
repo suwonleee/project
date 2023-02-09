@@ -1,0 +1,27 @@
+/* //! html 코드   */
+/* <!-- 테일윈드 3.x -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<div class="border-4 border-black text-[30px]">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur illum nam culpa sequi reiciendis officia minus omnis at expedita, optio architecto officiis accusamus, corporis animi distinctio nemo labore cupiditate molestias.
+</div>
+
+<div class="border-4 border-black text-[red]">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur illum nam culpa sequi reiciendis officia minus omnis at expedita, optio architecto officiis accusamus, corporis animi distinctio nemo labore cupiditate molestias.
+</div>
+
+<div class="border-4 border-black text-[color:blue]">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur illum nam culpa sequi reiciendis officia minus omnis at expedita, optio architecto officiis accusamus, corporis animi distinctio nemo labore cupiditate molestias.
+</div>
+
+/* ! 이 친구만, 문장 내 div 텍스트 컬러 지정
+<div class="border-4 border-black text-[color:var(--color-1)]">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur illum nam culpa sequi reiciendis officia minus omnis at expedita, optio architecto officiis accusamus, corporis animi distinctio nemo labore cupiditate molestias.
+</div> */
+
+/* //! CSS */
+:root {
+  --color-1: pink;
+  --size-1: 10rem;
+}
