@@ -131,11 +131,15 @@ function App() {
               {/* todo 리스트 콘텐츠 꾸미기. */}
               {/* whitespace-pre-wrap leading-relaxed를 통해서 블락 내 엔터(enter, \n)기능 활성화 */}
               <div className='mt-4 p-10 shadow rounded-[20px] 
-              whitespace-pre-wrap leading-relaxed'>
+              whitespace-pre-wrap leading-relaxed
+              // ! 여기에 이렇게 지정해주면 따로 박스 설정 없이 main 컬러를 지정해줄 수 있다. hover = 마우스 올렸을 때 색상 변하게 만들기
+              
+              hover:text-[color:var(--mui-color-primary-main)]'>
+                {todo.content}
                 {/* 이렇게 박스를 지정해주고, 글씨 색상까지 바꿀 수 있다. */}
-                <Box component="span" sx={{color:'primary.main'}}>
-                  {todo.content}
-                </Box>
+                {/* <Box component="span" sx={{color:'primary.main'}}> */}
+                  {/* {todo.content}
+                </Box> */}
               </div>
             </li>
           ))}
@@ -145,6 +149,19 @@ function App() {
   );
 }
 
+const muiThemePaletteKeys = [	
+  "background",	
+  "common",	
+  "error",	
+  "grey",	
+  "info",	
+  "primary",	
+  "secondary",	
+  "success",	
+  "text",	
+  "warning",	
+];
+
 function Root() {
   // Create a theme instance.
   const theme = createTheme({
@@ -153,11 +170,25 @@ function Root() {
     },
     palette: {
       primary: {
-        main: "#3C5973",
+        main: "#a35973",
         contrastText: "#ffffff"
       }
     }
   });
+  useEffect(() => {	
+    const r = document.querySelector(':root');	
+    
+    muiThemePaletteKeys.forEach((paletteKey) => {	
+      const themeColorObj = theme.palette[paletteKey];	
+    
+      for ( const key in themeColorObj ) {	
+        if (Object.hasOwnProperty.call(themeColorObj, key)) {	
+          const colorVal = themeColorObj[key];	
+          r.style.setProperty(`--mui-color-${paletteKey}-${key}`, colorVal);	
+        }	
+      }	
+    });	
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
