@@ -1,5 +1,5 @@
-//https://codepen.io/suwonleee/pen/eYjwmXw?editors=0010
-// 테일윈드 추가하기
+//https://codepen.io/suwonleee/pen/rNrXWbe?editors=0010
+// 버튼 추가하기
 const { useState, useRef, useEffect } = React;
 
 import classNames from "https://cdn.skypack.dev/classnames";
@@ -140,7 +140,7 @@ function App() {
               {/* todo 리스트 콘텐츠 꾸미기. */}
               {/* whitespace-pre-wrap leading-relaxed를 통해서 블락 내 엔터(enter, \n)기능 활성화 */}
               <div className="mt-4 shadow rounded-[20px] flex">
-                <div className="bg-red-500 w-[150px] flex-shrink-0">체크박스</div>
+                <Button className="flex-shrink-0 !item-start !rounded-[20px_0_0_20px]">체크박스</Button>
                 {/* // ! bg(background 컬러를 지정해주어 어느 정도 영역을 포함하는지 확인해보기)
                 여기에 이렇게 지정해주면 따로 박스 설정 없이 main 컬러를 지정해줄 수 있다. hover = 마우스 올렸을 때 색상 변하게 만들기 */}
                 <div className="bg-blue-400 whitespace-pre-wrap leading-relaxed hover:text-[color:var(--mui-color-primary-main)] flex-grow">
