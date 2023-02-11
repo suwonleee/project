@@ -1,5 +1,6 @@
 //https://codepen.io/suwonleee/pen/rNrXWbe?editors=0010
-// 버튼 추가하기
+//, 우측옵션버튼 꾸미기
+
 const { useState, useRef, useEffect } = React;
 
 import classNames from "https://cdn.skypack.dev/classnames";
@@ -142,7 +143,7 @@ function App() {
               <div className="mt-4 shadow rounded-[20px] flex">
                 <Button className="flex-shrink-0 !item-start !rounded-[20px_0_0_20px]" color="inherit">
                 {/* //! text-4xl 은 그 개체의 크기, 그리고 일단 짝 홀로 색깔 나누기 */}
-                  <span className={classNames("text-4xl", {
+                  <span className={classNames( "bg-red-500", "text-4xl", {
                     "text-[color:var(--mui-color-primary-main)]":index % 2 == 0
                   }, {
                     "text-[#dcdcdc]":index % 2 != 0
@@ -160,8 +161,9 @@ function App() {
                   {/* {todo.content}
                 </Box> */}
                 </div>
-                <Button className="flex-shrink-0 !items-start" color="inherit">
-                  <span className="text-[#dcdcdc] text-2xl">
+                {/* //! 우측 버튼 꾸며주기 */}
+                <Button className="flex-shrink-0 !items-start !rounded-[0_20px_20px_0]" color="inherit">
+                  <span className="text-[#dcdcdc] text-2xl bg-red-500">
                     <i className="fa-solid fa-ellipsis-vertical"></i>
                   </span>
                 </Button>
