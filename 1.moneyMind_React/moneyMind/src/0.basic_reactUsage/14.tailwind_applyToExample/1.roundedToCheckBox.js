@@ -121,7 +121,7 @@ function App() {
       {/* //! 할일 리스트 담아줄 것 만들기 */}
       <div className="mt-4 px-4">
         <ul>
-          {todosState.todos.map((todo) => (
+          {todosState.todos.map((todo, index) => (
             <li key={todo.id} className="mt-10">
               <div className="flex gap-2">
              {/* todo 리스트 번호랑, 작성 날짜 꾸미기 pt-1 은 padding top */}
@@ -140,7 +140,17 @@ function App() {
               {/* todo 리스트 콘텐츠 꾸미기. */}
               {/* whitespace-pre-wrap leading-relaxed를 통해서 블락 내 엔터(enter, \n)기능 활성화 */}
               <div className="mt-4 shadow rounded-[20px] flex">
-                <Button className="flex-shrink-0 !item-start !rounded-[20px_0_0_20px]">체크박스</Button>
+                <Button className="flex-shrink-0 !item-start !rounded-[20px_0_0_20px]" color="inherit">
+                {/* //! text-4xl 은 그 개체의 크기, 그리고 일단 짝 홀로 색깔 나누기 */}
+                  <span className={classNames("text-4xl", {
+                    "text-[color:var(--mui-color-primary-main)]":index % 2 == 0
+                  }, {
+                    "text-[#dcdcdc]":index % 2 != 0
+                  })}>
+                  {/* // ! 체크박스 설정해주기 */}
+                    <i className="fa-solid fa-check"></i>	
+                  </span>
+                </Button>
                 {/* // ! bg(background 컬러를 지정해주어 어느 정도 영역을 포함하는지 확인해보기)
                 여기에 이렇게 지정해주면 따로 박스 설정 없이 main 컬러를 지정해줄 수 있다. hover = 마우스 올렸을 때 색상 변하게 만들기 */}
                 <div className="bg-blue-400 whitespace-pre-wrap leading-relaxed hover:text-[color:var(--mui-color-primary-main)] flex-grow">
@@ -150,7 +160,11 @@ function App() {
                   {/* {todo.content}
                 </Box> */}
                 </div>
-                <div className="bg-red-300 w-[150px] flex-shrink-0">후후</div>
+                <Button className="flex-shrink-0 !items-start" color="inherit">
+                  <span className="text-[#dcdcdc] text-2xl">
+                    <i className="fa-solid fa-ellipsis-vertical"></i>
+                  </span>
+                </Button>
               </div>
             </li>
           ))}
