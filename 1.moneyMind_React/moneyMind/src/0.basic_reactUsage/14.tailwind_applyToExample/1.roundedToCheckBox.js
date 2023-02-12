@@ -162,9 +162,12 @@ function App() {
                     <i className="fa-solid fa-check"></i>
                   </span>
                 </Button>
+                {/* //! 내용과 체크 박스 사이의 구분자 넣기 */}
+                <div className="flex-shrink-0 my-5 w-[2px] bg-[#dcdcdc] mr-4"></div>
                 {/* // ! bg(background 컬러를 지정해주어 어느 정도 영역을 포함하는지 확인해보기)
                 여기에 이렇게 지정해주면 따로 박스 설정 없이 main 컬러를 지정해줄 수 있다. hover = 마우스 올렸을 때 색상 변하게 만들기 */}
-                <div className="bg-blue-400 whitespace-pre-wrap leading-relaxed hover:text-[color:var(--mui-color-primary-main)] flex-grow">
+                <div className=" whitespace-pre-wrap leading-relaxed hover:text-[color:var(--mui-color-primary-main)] flex-grow flex items-center my-5 ">
+                {/* my-5 는 마진탑 + 마진 바텀 */}
                   {todo.content}
                   {/* 이렇게 박스를 지정해주고, 글씨 색상까지 바꿀 수 있다. */}
                 {/* <Box component="span" sx={{color:'primary.main'}}> */}
@@ -173,10 +176,9 @@ function App() {
                 </div>
                 {/* //! 우측 버튼 꾸며주기 */}
                 <Button	
-                  className="flex-shrink-0 !items-start !rounded-[0_20px_20px_0]"	
-                  color="inherit"	
-                >	
-                  <span className="text-[#dcdcdc] text-2xl h-[80px] flex items-center">
+                  className="flex-shrink-0 !items-start !rounded-[0_20px_20px_0]"	color="inherit">	
+                  <span className="text-[#dcdcdc] text-2xl h-[80px] flex items-center">	
+                    <i className="fa-solid fa-ellipsis-vertical"></i>
                   </span>
                 </Button>
               </div>
