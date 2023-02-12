@@ -141,15 +141,25 @@ function App() {
               {/* todo 리스트 콘텐츠 꾸미기. */}
               {/* whitespace-pre-wrap leading-relaxed를 통해서 블락 내 엔터(enter, \n)기능 활성화 */}
               <div className="mt-4 shadow rounded-[20px] flex">
-                <Button className="flex-shrink-0 !item-start !rounded-[20px_0_0_20px]" color="inherit">
-                {/* //! text-4xl 은 그 개체의 크기, 그리고 일단 짝 홀로 색깔 나누기 */}
-                  <span className={classNames( "bg-red-500", "text-4xl", {
-                    "text-[color:var(--mui-color-primary-main)]":index % 2 == 0
-                  }, {
-                    "text-[#dcdcdc]":index % 2 != 0
-                  })}>
-                  {/* // ! 체크박스 설정해주기 */}
-                    <i className="fa-solid fa-check"></i>	
+              <Button	
+                  className="flex-shrink-0 !items-start !rounded-[20px_0_0_20px]"	
+                  color="inherit"	
+                >	
+                  <span	
+                  //! text-4xl 은 그 개체의 크기, 그리고 일단 짝 홀로 색깔 나누기 
+                    className={classNames(	
+                      "text-4xl",	
+                      "h-[80px]",	
+                      "flex items-center",	
+                      {	
+                        "text-[color:var(--mui-color-primary-main)]":	
+                          index % 2 == 0	
+                      },	
+                      { "text-[#dcdcdc]": index % 2 != 0 }	
+                    )}	
+                  >	
+                  {/* 체크박스 설정해주기 */}
+                    <i className="fa-solid fa-check"></i>
                   </span>
                 </Button>
                 {/* // ! bg(background 컬러를 지정해주어 어느 정도 영역을 포함하는지 확인해보기)
@@ -162,9 +172,11 @@ function App() {
                 </Box> */}
                 </div>
                 {/* //! 우측 버튼 꾸며주기 */}
-                <Button className="flex-shrink-0 !items-start !rounded-[0_20px_20px_0]" color="inherit">
-                  <span className="text-[#dcdcdc] text-2xl bg-red-500">
-                    <i className="fa-solid fa-ellipsis-vertical"></i>
+                <Button	
+                  className="flex-shrink-0 !items-start !rounded-[0_20px_20px_0]"	
+                  color="inherit"	
+                >	
+                  <span className="text-[#dcdcdc] text-2xl h-[80px] flex items-center">
                   </span>
                 </Button>
               </div>
