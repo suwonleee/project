@@ -25,7 +25,11 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+// import { color } from '@mui/system';
+// import AdbIcon from 'img/gggh.png';
+
+let imgSrc = "http://drive.google.com/uc?export=view&id=1kTIatABxXiTIK1e5fbfpdc7toduEf5I3"
+
 
 const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
 //영어 페이지를 만든다면
@@ -53,7 +57,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           {/* //! 스몰 메뉴 햄버거 */}
@@ -110,7 +114,9 @@ function ResponsiveAppBar() {
 
           {/* // ! 풀스크린 아이콘 */}
           {/* 가운데로 보내주기 위해 position fixed와 양쪽 다 0으로 설정 */}
-          <AdbIcon sx={{  flexGrow: 0, mx: 'auto', position: 'fixed' , left: 0, right: 0, display: { xs: 'none', md: 'block' } }} />
+          <Box sx={{width:'4%', flexGrow: 0, mx: 'auto', position: 'fixed' , left: 0, right: 0, display: { xs: 'none', md: 'block' }}}>
+            <img src={imgSrc} alt={imgSrc} />
+          </Box>
           {/* <Typography
             variant="h6"
             noWrap
@@ -132,7 +138,9 @@ function ResponsiveAppBar() {
           
 
           {/* //! 스몰 아이콘/텍스트 */}
-          <AdbIcon sx={{ mx: 'auto', display: { xs: 'flex', md: 'none' }}} />
+          <Box sx={{width:'5%', mx: 'auto', display: { xs: 'flex', md: 'none' }}}>
+            <img src={imgSrc} alt={imgSrc}/>
+          </Box>
           {/* <Typography
             variant="h5"
             noWrap

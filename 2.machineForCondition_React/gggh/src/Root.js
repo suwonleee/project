@@ -23,11 +23,23 @@ function Root() {
     typography: {
       fontFamily: ["GmarketSansMedium"],
     },
+    components : {
+      MuiAppBar: {
+        styleOverrides: {
+          colorPrimary: {
+            //앱바 배경 색상
+            backgroundColor: "#fff",
+            //앱바 텍스트 색상
+            color: "#0d0d0d"
+          }
+        }
+      }
+    },
     // 앱 테마
     palette: {
       primary: {
-        main: "#A0BED9",
-        contrastText: "#0D0D0D",
+        main: "#3C35F2",
+        contrastText: "#F2F2F2",
       },
     },
   });
