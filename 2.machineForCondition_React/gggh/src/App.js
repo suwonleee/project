@@ -21,13 +21,13 @@ function App() {
       <AppBar position="fixed">
         <Toolbar>
           <div className="flex-1 self-stretch flex justify-start">
-            {location.pathname !== "/history" && (
+            {location.pathname !== "/appbar" && (
               <NavLink className="select-none flex items-center" to="/appbar">
               {/* to="/history" -> 를 사용해주면 history 페이지로 이동*/}
                 앱바 메뉴
               </NavLink>
             )}
-            {location.pathname === "/history" && (
+            {location.pathname === "/appbar" && (
               <NavLink className="select-none flex items-center" to="/main">
                 접기
               </NavLink>
