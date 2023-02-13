@@ -18,6 +18,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import minWidth from '@mui/system';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
@@ -25,6 +26,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+// import { Grid } from '@mui/material';
 // import { color } from '@mui/system';
 // import AdbIcon from 'img/gggh.png';
 
@@ -57,7 +59,8 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" >
+    // 앱바 크기(높이) 지정해주기
+    <AppBar position="static" sx={{ height:'80px'}} >
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           {/* //! 스몰 메뉴 햄버거 */}
@@ -113,10 +116,13 @@ function ResponsiveAppBar() {
           </Box>
 
           {/* // ! 풀스크린 아이콘 */}
-          {/* 가운데로 보내주기 위해 position fixed와 양쪽 다 0으로 설정 */}
-          <Box sx={{width:'4%', flexGrow: 0, mx: 'auto', position: 'fixed' , left: 0, right: 0, display: { xs: 'none', md: 'block' }}}>
-            <img src={imgSrc} alt={imgSrc} />
-          </Box>
+          {/* 화면 정 가운데에 위치시켜주기 위해서 첫 박스로 감싸주기*/}
+          
+          {/* 로고
+            <Box sx={{ mx: 'auto', width:'6%'}}>
+              <img src={imgSrc} alt={imgSrc} />
+            </Box> */}
+          
           {/* <Typography
             variant="h6"
             noWrap
@@ -138,8 +144,25 @@ function ResponsiveAppBar() {
           
 
           {/* //! 스몰 아이콘/텍스트 */}
-          <Box sx={{width:'5%', mx: 'auto', display: { xs: 'flex', md: 'none' }}}>
-            <img src={imgSrc} alt={imgSrc}/>
+          <Box style={{
+                  position: 'absolute', 
+                  left: '50%', 
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)'
+                }}>
+              {/* 로고 */}
+              <Box sx={{ mx: 'auto', mb:'0.2%', mt:'0.01%', width:'8%', minWidth:'6%'  }}>
+                <img src={imgSrc} alt={imgSrc} />
+              </Box>
+              {/* 텍스트 */}
+              <Typography variant='overline' sx={{ position: 'absolute',
+                  left: '50%', 
+                  top: '130%',
+                  transform: 'translate(-50%, -50%)',
+                  display: { xs: 'none', sm: 'flex' }
+                  }}>
+                각자의 상황에 맞는 기계 찾기
+              </Typography>
           </Box>
           {/* <Typography
             variant="h5"

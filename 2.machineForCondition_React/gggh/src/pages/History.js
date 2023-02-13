@@ -17,6 +17,7 @@ import { RecordModal, useRecordModalStatus } from "../components/RecordModal";
 import { WiseSaying } from "../components/WiseSaying";
 import { useRecordsStatus } from "../hooks";
 
+
 function RecordListItem({ record, optionDrawerStatus }) {
   const wiseSayingIndex = record.id % 5 === 0 ? record.id / 5 - 1 : null;
 

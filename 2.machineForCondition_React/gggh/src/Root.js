@@ -31,6 +31,10 @@ function Root() {
             backgroundColor: "#fff",
             //앱바 텍스트 색상
             color: "#0d0d0d"
+          },
+          dense: {
+            height: 80,
+            minHeight: 80
           }
         }
       }
