@@ -30,7 +30,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import { color } from '@mui/system';
 // import AdbIcon from 'img/gggh.png';
 
-let imgSrc = "http://drive.google.com/uc?export=view&id=1kTIatABxXiTIK1e5fbfpdc7toduEf5I3"
+let imgSrc = "http://drive.google.com/uc?export=view&id=1kO6M5w_tPrqAPmxjNwD54EJ0Apj9Bk-y"
 
 
 const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
@@ -151,18 +151,18 @@ function ResponsiveAppBar() {
                   transform: 'translate(-50%, -50%)'
                 }}>
               {/* 로고 */}
-              <Box sx={{ mx: 'auto', mb:'0.2%', mt:'0.01%', width:'8%', minWidth:'6%'  }}>
+              <Box sx={{ mx: 'auto', mt:'2%', width:'14%', minWidth:'6%'  }}>
                 <img src={imgSrc} alt={imgSrc} />
               </Box>
               {/* 텍스트 */}
-              <Typography variant='overline' sx={{ position: 'absolute',
+              {/* <Typography variant='overline' sx={{ position: 'absolute',
                   left: '50%', 
                   top: '130%',
                   transform: 'translate(-50%, -50%)',
                   display: { xs: 'none', sm: 'flex' }
                   }}>
                 각자의 상황에 맞는 기계 찾기
-              </Typography>
+              </Typography> */}
           </Box>
           {/* <Typography
             variant="h5"
