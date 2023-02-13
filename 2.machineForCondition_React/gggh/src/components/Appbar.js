@@ -18,7 +18,6 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import minWidth from '@mui/system';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
@@ -60,9 +59,9 @@ function ResponsiveAppBar() {
 
   return (
     // 앱바 크기(높이) 지정해주기
-    <AppBar position="static" sx={{ height:'80px'}} >
-      <Container maxWidth="lg">
-        <Toolbar disableGutters>
+    <AppBar position="static" sx={{ height:'100px'}} >
+      <Container maxWidth="lg" >
+        <Toolbar disableGutters sx={{top: '20%'}}>
           {/* //! 스몰 메뉴 햄버거 */}
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -143,16 +142,20 @@ function ResponsiveAppBar() {
           
           
 
-          {/* //! 스몰 아이콘/텍스트 */}
-          <Box style={{
+          {/* //! 아이콘/텍스트 */}
+          <Box sx={{
                   position: 'absolute', 
                   left: '50%', 
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)'
+                  top: '60%',
+                  transform: 'translate(-50%, -50%)',
+                  minWidth: '6%', maxWidth: '7%',
+                  display: { xs: 'block', sm: 'block' }
                 }}>
               {/* 로고 */}
-              <Box sx={{ mx: 'auto', mt:'4%', width:'14%', minWidth:'5%'  }}>
-                <img src={imgSrc} alt={imgSrc} />
+              <Box>
+                <Box sx={{}}>
+                  <img src={imgSrc} alt={imgSrc}/>
+                </Box>
               </Box>
               {/* 텍스트 */}
               {/* <Typography variant='overline' sx={{ position: 'absolute',
