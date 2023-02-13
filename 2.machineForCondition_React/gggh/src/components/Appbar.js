@@ -30,7 +30,7 @@ import MenuItem from '@mui/material/MenuItem';
 // import { color } from '@mui/system';
 // import AdbIcon from 'img/gggh.png';
 
-let imgSrc = "http://drive.google.com/uc?export=view&id=1kO6M5w_tPrqAPmxjNwD54EJ0Apj9Bk-y"
+let imgSrc = "http://drive.google.com/uc?export=view&id=1yDdBi0pKzpphRQqLEQWPC5ybPBPLfsEY"
 
 
 const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
@@ -151,7 +151,7 @@ function ResponsiveAppBar() {
                   transform: 'translate(-50%, -50%)'
                 }}>
               {/* 로고 */}
-              <Box sx={{ mx: 'auto', mt:'2%', width:'14%', minWidth:'6%'  }}>
+              <Box sx={{ mx: 'auto', mt:'4%', width:'14%', minWidth:'5%'  }}>
                 <img src={imgSrc} alt={imgSrc} />
               </Box>
               {/* 텍스트 */}
