@@ -59,162 +59,165 @@ function ResponsiveAppBar() {
 
   return (
     // 앱바 크기(높이) 지정해주기
-    <AppBar position="static" sx={{ height:'100px'}} >
+    <AppBar position="static" sx={{ height:'100px' }} >
       <Container maxWidth="lg" >
-        <Toolbar disableGutters sx={{top: '20%'}}>
-          {/* //! 스몰 메뉴 햄버거 */}
-          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{ flexGrow: 0,
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pagesKor.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-
-
-          {/* //! 이게 풀스크린 메뉴  */}
-          <Box sx={{  flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-            {pagesKor.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'inherit', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          {/* // ! 풀스크린 아이콘 */}
-          {/* 화면 정 가운데에 위치시켜주기 위해서 첫 박스로 감싸주기*/}
-          
-          {/* 로고
-            <Box sx={{ mx: 'auto', width:'6%'}}>
-              <img src={imgSrc} alt={imgSrc} />
-            </Box> */}
-          
-          {/* <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              // 패딩같은 친구 mr
-              mr: 5,
-              display: { xs: 'none', md: 'flex' },
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            라지
-          </Typography> */}
-          
-          
-
-          {/* //! 아이콘/텍스트 */}
-          <Box sx={{
-                  position: 'absolute', 
-                  left: '50%', 
-                  top: '60%',
-                  transform: 'translate(-50%, -50%)',
-                  minWidth: '6%', maxWidth: '7%',
-                  display: { xs: 'block', sm: 'block' }
-                }}>
-              {/* 로고 */}
-              <Box>
-                <Box sx={{}}>
-                  <img src={imgSrc} alt={imgSrc}/>
-                </Box>
+        <Toolbar disableGutters sx={{ top: '25%'}}>
+            <Box sx={{ }}>
+              {/* //! 스몰 메뉴 햄버거 */}
+              <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  color="inherit"
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{ flexGrow: 0,
+                    display: { xs: 'flex', md: 'none' },
+                  }}
+                >
+                  {pagesKor.map((page) => (
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
               </Box>
-              {/* 텍스트 */}
-              {/* <Typography variant='overline' sx={{ position: 'absolute',
-                  left: '50%', 
-                  top: '130%',
-                  transform: 'translate(-50%, -50%)',
-                  display: { xs: 'none', sm: 'flex' }
-                  }}>
-                각자의 상황에 맞는 기계 찾기
-              </Typography> */}
-          </Box>
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            스몰
-          </Typography> */}
-          
 
-          {/* //! 회원 메뉴 풀스크린, 작은 스크린 */}
-          <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , right: 20, display: { xs: 'flex', md: 'block' }}}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+
+              {/* //! 이게 풀스크린 메뉴  */}
+              <Box sx={{  flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                {pagesKor.map((page) => (
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'inherit', display: 'block' }}
+                  >
+                    {page}
+                  </Button>
+                ))}
+              </Box>
+
+              {/* // ! 풀스크린 아이콘 */}
+              {/* 화면 정 가운데에 위치시켜주기 위해서 첫 박스로 감싸주기*/}
+              
+              {/* 로고
+                <Box sx={{ mx: 'auto', width:'6%'}}>
+                  <img src={imgSrc} alt={imgSrc} />
+                </Box> */}
+              
+              {/* <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  // 패딩같은 친구 mr
+                  mr: 5,
+                  display: { xs: 'none', md: 'flex' },
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                라지
+              </Typography> */}
+              
+              
+
+              {/* //! 아이콘/텍스트 */}
+              <Box sx={{
+                      flexGrow: 0 ,
+                      position: 'absolute', 
+                      left: '50%', 
+                      top: '55%',
+                      transform: 'translate(-50%, -50%)',
+                      minWidth: '6%', maxWidth: '7%',
+                      display: { xs: 'flex', sm: 'flex' }
+                    }}>
+                  {/* 로고 */}
+                  <Box>
+                    <Box sx={{width: { xs: '170%', sm: '130%', md:'100%'}}}>
+                      <img src={imgSrc} alt={imgSrc}/>
+                    </Box>
+                  </Box>
+                  {/* 텍스트 */}
+                  {/* <Typography variant='overline' sx={{ position: 'absolute',
+                      left: '50%', 
+                      top: '130%',
+                      transform: 'translate(-50%, -50%)',
+                      display: { xs: 'none', sm: 'flex' }
+                      }}>
+                    각자의 상황에 맞는 기계 찾기
+                  </Typography> */}
+              </Box>
+              {/* <Typography
+                variant="h5"
+                noWrap
+                component="a"
+                href=""
+                sx={{
+                  mr: 2,
+                  display: { xs: 'flex', md: 'none' },
+                  flexGrow: 1,
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                스몰
+              </Typography> */}
+              
+
+              {/* //! 회원 메뉴 풀스크린, 작은 스크린 */}
+              <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , top: '3%', right:'5%'}}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
           </Box>
         </Toolbar>
       </Container>
