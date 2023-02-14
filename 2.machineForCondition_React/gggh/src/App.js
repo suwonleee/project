@@ -13,6 +13,13 @@
 
 
 import * as React from 'react';
+import {
+  Navigate,
+  NavLink,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -25,6 +32,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import SurveyForm from "./pages/SurveyForm";
+
 // import { Grid } from '@mui/material';
 // import { color } from '@mui/system';
 // import AdbIcon from 'img/gggh.png';
@@ -34,7 +43,15 @@ let imgSrc = "http://drive.google.com/uc?export=view&id=1yDdBi0pKzpphRQqLEQWPC5y
 
 
 function App() {
+  const location = useLocation();
   const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
+  const locationKor = {
+    '노트북' : 'surveyform',
+    '성능' : 'app',
+    '블로그' : 'surveyform',
+    '추가1' : 'app',
+    '추가2' : 'surveyform'
+  };
   //영어 페이지를 만든다면
   // const pagesEng = ['Products', 'Pricing', 'Blog'];
 
@@ -71,7 +88,7 @@ function App() {
                     aria-haspopup="true"
                     onClick={handleOpenNavMenu}
                     color="inherit"
-                  >
+                  >                  
                     <MenuIcon />
                   </IconButton>
                   <Menu
@@ -93,9 +110,9 @@ function App() {
                     }}
                   >
                     {pagesKor.map((page) => (
-                      <MenuItem key={page} onClick={handleCloseNavMenu}>
-                        <Typography textAlign="center">{page}</Typography>
-                      </MenuItem>
+                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                      <Typography textAlign="center">{page}</Typography>
+                    </MenuItem>
                     ))}
                   </Menu>
                 </Box>
@@ -109,7 +126,17 @@ function App() {
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: 'inherit', display: 'block' }}
                     >
-                      {page}
+                      {location.pathname !== "/surveyform" && (
+                        <NavLink className="select-none flex items-center" to="/surveyform">
+                        {/* to="/history" -> 를 사용해주면 history 페이지로 이동*/}
+                          {page}
+                        </NavLink>
+                      )}
+                      {location.pathname === "/surveyform" && (
+                        <NavLink className="select-none flex items-center" to="/app">
+                          {page}
+                        </NavLink>
+                      )}
                     </Button>
                   ))}
                 </Box>
@@ -126,9 +153,11 @@ function App() {
                       }}>
                     {/* 로고 */}
                     <Box>
-                      <Box sx={{width: { xs: '190%', sm: '150%', md:'120%'}}}>
-                        <img src={imgSrc} alt={imgSrc}/>
-                      </Box>
+                      <NavLink className="select-none flex items-center" to="/app">
+                        <Box sx={{width: { xs: '190%', sm: '150%', md:'120%'}}}>
+                          <img src={imgSrc} alt={imgSrc}/>
+                        </Box>
+                      </NavLink>
                     </Box>
                 </Box>
                 
@@ -167,6 +196,10 @@ function App() {
           </Toolbar>
         </Container>
       </AppBar>
+      <Routes>
+        <Route path="/surveyform" element={<SurveyForm />} />
+        <Route path="*" element={<Navigate to="/app" />} />
+      </Routes>
     </>
   );
 }

@@ -11,7 +11,7 @@ import { NoticeSnackbar } from "./components/NoticeSnackbar";
 import History from "./pages/History";
 import Main from "./pages/Main";
 import ResponsiveAppBar from "./components/Appbar";
-import SurveyForm from "./components/SurveyForm";
+import SurveyForm from "./pages/SurveyForm";
 
 function App() {
   const location = useLocation();
