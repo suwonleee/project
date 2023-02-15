@@ -125,25 +125,14 @@ function App() {
 
                 {/* //! 이게 풀스크린 메뉴  */}
                 <Box sx={{  flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
-                  {pagesKor.map((page) => (
-                    <Button
-                      key={page}
-                      onClick={handleCloseNavMenu}
-                      sx={{ my: 2, color: 'inherit', display: 'block' }}
-                    >
-                      {location.pathname !== "/notebooklist" && (
-                        <NavLink className="select-none flex items-center" to="/notebooklist">
-                        {/* to="/history" -> 를 사용해주면 history 페이지로 이동*/}
-                          {page}
-                        </NavLink>
-                      )}
-                      {location.pathname === "/notebooklist" && (
-                        <NavLink className="select-none flex items-center" to="/app">
-                          {page}
-                        </NavLink>
-                      )}
-                    </Button>
-                  ))}
+                {locationKor.map((page) => (
+                      <MenuItem key={page.btName} onClick={handleCloseNavMenu}>
+                      <NavLink className="select-none flex items-center" to={page.moveTo}>
+                        <Typography textAlign="center" >{page.btName}</Typography>
+
+                      </NavLink>
+                    </MenuItem>
+                    ))}
                 </Box>
 
                 {/* //! 아이콘/텍스트 */}
