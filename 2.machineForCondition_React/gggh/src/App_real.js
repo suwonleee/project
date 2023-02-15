@@ -12,6 +12,8 @@ import History from "./pages/History";
 import Main from "./pages/Main";
 import ResponsiveAppBar from "./components/Appbar";
 import SurveyForm from "./pages/SurveyForm";
+import NotebookList from "./pages/NotebookList";
+
 
 function App() {
   const location = useLocation();
@@ -60,6 +62,8 @@ function App() {
         <Route path="/history" element={<History />} />
         <Route path="/appbar" element={<ResponsiveAppBar />} />
         <Route path="/surveyform" element={<SurveyForm />} />
+        <Route path="/notebooklist" element={<NotebookList />} />
+
         <Route path="*" element={<Navigate to="/appbar" />} />
       </Routes>
     </>

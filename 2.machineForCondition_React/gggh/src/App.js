@@ -33,6 +33,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SurveyForm from "./pages/SurveyForm";
+import NotebookList from "./pages/NotebookList";
+
 
 // import { Grid } from '@mui/material';
 // import { color } from '@mui/system';
@@ -45,13 +47,13 @@ let imgSrc = "http://drive.google.com/uc?export=view&id=1yDdBi0pKzpphRQqLEQWPC5y
 function App() {
   const location = useLocation();
   const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
-  const locationKor = {
-    '노트북' : 'surveyform',
-    '성능' : 'app',
-    '블로그' : 'surveyform',
-    '추가1' : 'app',
-    '추가2' : 'surveyform'
-  };
+  const locationKor = [
+    {btName : "노트북", moveTo: "surveyform"},
+    {btName : "성능", moveTo: "notebooklist"},
+    {btName : "블로그", moveTo: "surveyform"},
+    {btName : "추가1", moveTo: "notebooklist"},
+    {btName : "추가2", moveTo: "surveyform"}
+  ];
   //영어 페이지를 만든다면
   // const pagesEng = ['Products', 'Pricing', 'Blog'];
 
@@ -109,9 +111,12 @@ function App() {
                       display: { xs: 'flex', md: 'none' },
                     }}
                   >
-                    {pagesKor.map((page) => (
-                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{page}</Typography>
+                    {locationKor.map((page) => (
+                      <MenuItem key={page.btName} onClick={handleCloseNavMenu}>
+                      <NavLink className="select-none flex items-center" to={page.moveTo}>
+                        <Typography textAlign="center" >{page.btName}</Typography>
+
+                      </NavLink>
                     </MenuItem>
                     ))}
                   </Menu>
@@ -126,13 +131,13 @@ function App() {
                       onClick={handleCloseNavMenu}
                       sx={{ my: 2, color: 'inherit', display: 'block' }}
                     >
-                      {location.pathname !== "/surveyform" && (
-                        <NavLink className="select-none flex items-center" to="/surveyform">
+                      {location.pathname !== "/notebooklist" && (
+                        <NavLink className="select-none flex items-center" to="/notebooklist">
                         {/* to="/history" -> 를 사용해주면 history 페이지로 이동*/}
                           {page}
                         </NavLink>
                       )}
-                      {location.pathname === "/surveyform" && (
+                      {location.pathname === "/notebooklist" && (
                         <NavLink className="select-none flex items-center" to="/app">
                           {page}
                         </NavLink>
@@ -198,6 +203,8 @@ function App() {
       </AppBar>
       <Routes>
         <Route path="/surveyform" element={<SurveyForm />} />
+        <Route path="/notebooklist" element={<NotebookList />} />
+
         <Route path="*" element={<Navigate to="/app" />} />
       </Routes>
     </>
