@@ -1,6 +1,9 @@
+//https://codepen.io/suwonleee/pen/dyqPQRO?editors=0010
+
 // useSetRecoilState & useRecoilValue
-// useSetRecoilState -> 상태를 변경해줄 수도 있다.
-// useRecoilValue -> 값을 불러와주기.
+
+// ! useSetRecoilState -> 상태를 변경해줄 수도 있다.
+// ! useRecoilValue -> 값을 불러와주기.
 import React, {useState} from "react";
 import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 

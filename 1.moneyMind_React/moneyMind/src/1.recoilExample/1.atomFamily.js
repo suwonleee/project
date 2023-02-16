@@ -1,5 +1,9 @@
+// https://codepen.io/suwonleee/pen/KKxwrqb?editors=0010
+
+
 // atomFamily
-// 비슷한 atomFamily로 비슷한 atom을 동적으로 생성
+// ! 비슷한 atomFamily로 비슷한 atom을 동적으로 생성
+
 import React, {useState} from "react";
 import { atomFamily, useRecoilState } from "recoil";
 
@@ -81,6 +85,7 @@ function Page4() {
 function App() {
   const [pageNo, setPageNo] = useState(1);
   const switchPage = () => {
+    //pageNo
     setPageNo(pageNo + 1 <= 4 ? pageNo + 1 : 1);
   };
   const pageName = 'page' + pageNo;

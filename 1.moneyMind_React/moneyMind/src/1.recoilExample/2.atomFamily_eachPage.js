@@ -1,4 +1,6 @@
-// atomFamily를 사용하여, 각 페이지마다 고유의 값 유지가 안되는 버그 수정
+// ! atomFamily를 사용하여, 각 페이지마다 고유의 값 유지가 안되는 버그 수정
+//https://codepen.io/suwonleee/pen/eYLmQEw?editors=0010
+
 // atomFamily 각각 페이지
 // 비슷한 atomFamily로 비슷한 atom을 동적으로 생성
 import React, {useState} from "react";
