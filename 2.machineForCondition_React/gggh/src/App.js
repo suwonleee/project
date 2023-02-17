@@ -18,7 +18,7 @@ import {
   NavLink,
   Route,
   Routes,
-  useLocation,
+  // useLocation,
 } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -29,7 +29,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SurveyForm from "./pages/SurveyForm";
@@ -41,18 +41,17 @@ import NotebookList from "./pages/NotebookList";
 // import AdbIcon from 'img/gggh.png';
 
 
-let imgSrc = "http://drive.google.com/uc?export=view&id=1yDdBi0pKzpphRQqLEQWPC5ybPBPLfsEY"
+let imgSrc = "http://drive.google.com/uc?export=view&id=1nmK1uNuIi8mBqVlyJde8Pf9hymfePUHd"
 
 
 function App() {
-  const location = useLocation();
-  const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
+  // const location = useLocation();
+  // const pagesKor = ['노트북', '성능', '블로그', '추가1', '추가2'];
   const locationKor = [
     {btName : "노트북", moveTo: "surveyform"},
     {btName : "성능", moveTo: "notebooklist"},
     {btName : "블로그", moveTo: "surveyform"},
     {btName : "추가1", moveTo: "notebooklist"},
-    {btName : "추가2", moveTo: "surveyform"}
   ];
   //영어 페이지를 만든다면
   // const pagesEng = ['Products', 'Pricing', 'Blog'];
@@ -140,15 +139,15 @@ function App() {
                         flexGrow: 0 ,
                         position: 'absolute', 
                         left: '50%', 
-                        top: '100%',
+                        mt: '110%',
                         transform: 'translate(-50%, -50%)',
-                        minWidth: '6%', maxWidth: '7%',
+                        minWidth: '30%', maxWidth: '110%',
                         display: { xs: 'flex', sm: 'flex' }
                       }}>
                     {/* 로고 */}
                     <Box>
                       <NavLink className="select-none flex items-center" to="/app">
-                        <Box sx={{width: { xs: '190%', sm: '150%', md:'120%'}}}>
+                        <Box sx={{width: { xs: '210%', sm: '150%', md:'110%'}}}>
                           <img src={imgSrc} alt={imgSrc}/>
                         </Box>
                       </NavLink>
