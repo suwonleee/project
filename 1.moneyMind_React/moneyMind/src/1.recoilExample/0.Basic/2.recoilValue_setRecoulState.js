@@ -2,9 +2,10 @@
 
 // useSetRecoilState & useRecoilValue
 
+
+import React, {useState} from "react";
 // ! useSetRecoilState -> 상태를 변경해줄 수도 있다.
 // ! useRecoilValue -> 값을 불러와주기.
-import React, {useState} from "react";
 import { atom, useRecoilState, useSetRecoilState, useRecoilValue } from "recoil";
 
 const page1NoAtom = atom({
@@ -20,8 +21,8 @@ const page2NoAtom = atom({
 function Page1() {
   // page1NoAtom에 페이지 1 상태를 담아서 옮기기.
   const [no, setNo] = useRecoilState(page1NoAtom);
-  // ********  useSetRecoilState   ***************
-  // use  'Set'  RecoilState : 페이지1에서 페이지2 상태를 제어할 수 있게 만들기.
+  //*  useSetRecoiltate  
+  //!  use  'Set'  RecoilState : 페이지1에서 페이지2 상태를 제어할 수 있게 만들기.
   const setPage2No = useSetRecoilState(page2NoAtom);
   // 버튼을 누르면 페이지 2번의 상태를 초기화.
   const onClick = () => setPage2No(0);
@@ -43,7 +44,7 @@ function Page1() {
 
 function Page2() {
   // ********  useRecoil  'Value'   ***************
-  //useRecoilValue : 페이지 2에서 page1 값을 읽어오기.
+  // ! useRecoilValue : 페이지 2에서 page1 값을 읽어오기.
   const page1No = useRecoilValue(page1NoAtom);
   const [no, setNo] = useRecoilState(page2NoAtom);
 
