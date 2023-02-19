@@ -1,23 +1,10 @@
-
-//내가 원하는 포맷의 material UI app bar
-//https://mui.com/material-ui/react-app-bar/
-
-//레퍼런스
-//https://www.the14f.com/
-
-//정가운데 맞추기 레퍼런스
-// 1분 코딩 : https://studiomeal.com/archives/197
-// 공식 문서 : https://mui.com/joy-ui/react-grid/#spacing
-//https://mui.com/material-ui/react-bottom-navigation/#fixed-positioning
-
+// 거슬리는 색상 : #1A80D9 -> 두개가 나오는 메인 화면을 없애야한다. 하나를
 
 import * as React from 'react';
 import {
-  Navigate,
+  Outlet,
   NavLink,
-  Route,
-  Routes,
-  // useLocation,
+    // useLocation,
 } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -31,9 +18,6 @@ import Avatar from '@mui/material/Avatar';
 // import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import SurveyForm from "./pages/SurveyForm";
-import NotebookList from "./pages/NotebookList";
-import NotFound from "./pages/NotFound";
 
 
 // import { Grid } from '@mui/material';
@@ -185,18 +169,11 @@ function App() {
                       </MenuItem>
                     ))}
                   </Menu>
+                  <Outlet />
                 </Box>
           </Toolbar>
         </Container>
       </AppBar>
-      <Routes>
-        <Route path="/" element={<app />} />
-
-        <Route path="/surveyform" element={<SurveyForm />} />
-        <Route path="/notebooklist" element={<NotebookList />} />
-
-        <Route path="*" element={<NotFound />} />
-      </Routes>
     </>
   );
 }
