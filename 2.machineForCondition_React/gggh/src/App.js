@@ -1,5 +1,4 @@
 
-
 //내가 원하는 포맷의 material UI app bar
 //https://mui.com/material-ui/react-app-bar/
 
@@ -34,6 +33,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SurveyForm from "./pages/SurveyForm";
 import NotebookList from "./pages/NotebookList";
+import NotFound from "./pages/NotFound";
 
 
 // import { Grid } from '@mui/material';
@@ -190,10 +190,12 @@ function App() {
         </Container>
       </AppBar>
       <Routes>
+        <Route path="/" element={<app />} />
+
         <Route path="/surveyform" element={<SurveyForm />} />
         <Route path="/notebooklist" element={<NotebookList />} />
 
-        <Route path="*" element={<Navigate to="/app" />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
