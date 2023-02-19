@@ -120,6 +120,7 @@ function Page4() {
 
 function App() {
   const [pageNo, setPageNo] = useState(1);
+  //페이지 바꿔주는 버튼을 누르면 +1 페이지 나오게 해주기, 만약 4보다 크다면 다시 1로
   const switchPage = () => {
     setPageNo(pageNo + 1 <= 4 ? pageNo + 1 : 1);
   };
