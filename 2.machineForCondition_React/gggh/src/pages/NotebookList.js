@@ -49,7 +49,10 @@ export default function NotebookList() {
   const error = [gilad, jason, antoine].filter((v) => v).length !== 2;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box 
+      className="flex justify-center items-center" 
+      sx={{ bgcolor: 'green' , display: 'flex', height: '1000px'
+    }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
         <FormLabel component="legend">Assign responsibility</FormLabel>
         <FormGroup>

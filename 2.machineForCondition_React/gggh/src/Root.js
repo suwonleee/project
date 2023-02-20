@@ -4,6 +4,10 @@ import { useEffect } from "react";
 import { RecoilRoot } from "recoil";
 import App from "./App";
 
+import {
+  BrowserRouter
+  // useLocation,
+} from "react-router-dom";
 
 const muiThemePaletteKeys = [
   "background",
@@ -67,11 +71,13 @@ function Root() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App>
           <RecoilRoot>
+            <BrowserRouter >
+              <App />
+            </BrowserRouter>
+
             
           </RecoilRoot>
-        </App>
 
       </ThemeProvider>
     </>

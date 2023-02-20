@@ -8,14 +8,17 @@ import Box from '@mui/material/Box';
 //대화형 설문조사 페이지 https://goddino.tistory.com/182
 
 export function SurveyForm({
-}){
+
+  }) {
     return(
       <>
-        <Box sx={{ bgcolor: 'primary.main' , height:'400px',  mt: '5%'}}>
+        <Box 
+          className="flex justify-center items-center"
+          sx={{ bgcolor: 'orange' , height:'500px',  mt: '10%'}}
+        >
           <Button variant="outlined" sx={{  mt: '0%'}}>
             제대로 구동이 되면 이렇게 출력
           </Button>
-
         </Box>
       </>
     )
