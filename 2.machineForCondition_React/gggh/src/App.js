@@ -141,7 +141,7 @@ function App() {
                         }}>
                       {/* 로고 */}
                       <Box>
-                        <NavLink className="select-none flex items-center" to="/app">
+                        <NavLink className="select-none flex items-center" to="/main">
                           <Box sx={{width: { xs: '210%', sm: '150%', md:'110%'}}}>
                             <img src={imgSrc} alt={imgSrc}/>
                           </Box>
@@ -186,16 +186,15 @@ function App() {
             </Toolbar>
           </Container>
         </AppBar>
-          <Routes>
-            <Route path="/" element={<Main />}>
+        <Routes>
+          <Route path="/main" element={<Main />} />
 
-              <Route path="/surveyform" element={<SurveyForm />} />
-              <Route path="/notebooklist" element={<NotebookList/>} />
+          <Route path="/surveyform" element={<SurveyForm />} />
+          <Route path="/notebooklist" element={<NotebookList/>} />
 
-              <Route path="*" element={<NotFound/>} />
-              
-            </Route>
-          </Routes>
+          <Route path="*" element={<NotFound/>} />
+            
+        </Routes>
       
     </>
   );
