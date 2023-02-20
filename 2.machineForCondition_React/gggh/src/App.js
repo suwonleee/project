@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import {
-  Outlet,
   NavLink,
     // useLocation,
 } from "react-router-dom";
@@ -74,7 +73,7 @@ function App() {
     <>
         <AppBar position="static"  sx={{ height:'100px', boxShadow: 'none' }} >
           <Container maxWidth="lg" >
-            <Toolbar disableGutters sx={{ top: '25%'}}>
+            <Toolbar disableGutters sx={{ mt: '3%'}}>
                   {/* //! 스몰 메뉴 햄버거 */}
                   <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                     <IconButton
@@ -118,12 +117,11 @@ function App() {
 
 
                   {/* //! 이게 풀스크린 메뉴  */}
-                  <Box sx={{  flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                  <Box sx={{  flexGrow: 0, mt: '3%' ,display: { xs: 'none', md: 'flex' } }}>
                   {locationKor.map((page) => (
                         <MenuItem key={page.btName} onClick={handleCloseNavMenu}>
                         <NavLink className="select-none flex items-center" to={page.moveTo}>
                           <Typography textAlign="center" >{page.btName}</Typography>
-
                         </NavLink>
                       </MenuItem>
                       ))}
@@ -134,7 +132,7 @@ function App() {
                           flexGrow: 0 ,
                           position: 'absolute', 
                           left: '50%', 
-                          mt: '110%',
+                          mt: '105%',
                           transform: 'translate(-50%, -50%)',
                           minWidth: '30%', maxWidth: '110%',
                           display: { xs: 'flex', sm: 'flex' }
@@ -151,8 +149,8 @@ function App() {
                   
                   
 
-                  {/* //! 회원 메뉴 풀스크린, 작은 스크린 */}
-                  <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , top: '3%', right:'5%'}}>
+                  {/* //! 회원 메뉴 */}
+                  <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , mt: '3%', right:'5%'}}>
                     <Tooltip title="Open settings">
                       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -192,7 +190,7 @@ function App() {
           <Route path="/surveyform" element={<SurveyForm />} />
           <Route path="/notebooklist" element={<NotebookList/>} />
 
-          <Route path="*" element={<NotFound/>} />
+          <Route path="*" element={<Main/>} />
             
         </Routes>
       

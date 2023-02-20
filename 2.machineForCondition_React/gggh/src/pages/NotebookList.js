@@ -51,7 +51,7 @@ export default function NotebookList() {
   return (
     <Box 
       className="flex justify-center items-center" 
-      sx={{ bgcolor: 'green' , display: 'flex', height: '1000px'
+      sx={{ display: 'flex', height: '1000px'
     }}>
       <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
         <FormLabel component="legend">Assign responsibility</FormLabel>
