@@ -125,7 +125,7 @@ function App() {
                   </Box>
 
                   {/* //! 아이콘/텍스트 */}
-                  <Box  >
+                  <Box >
                     {/* 로고 */}
                     <Box>
                       <NavLink 
@@ -138,8 +138,11 @@ function App() {
                         left: '50%', 
                         top: '80%',
                         transform: 'translate(-50%, -50%)',
+                        maxHeight: { xs: 200, sm:200, md: 250 },
+                        maxWidth: { xs: 300, sm:300, md: 350 },
                       }}>
-                          <img src={imgSrc} alt={imgSrc} sx={{width: { xs: '300%', sm: '300%', md:'300%'}}}/>
+                          <img src={imgSrc} alt={imgSrc}/>
+                          {/* width='12' height='12' /> */}
                         </Box>
                       </NavLink>
                     </Box>
