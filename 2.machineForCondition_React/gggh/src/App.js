@@ -33,10 +33,7 @@ import Main from "./pages/Main";
 // import { Grid } from '@mui/material';
 // import { color } from '@mui/system';
 // import AdbIcon from 'img/gggh.png';
-
-
-let imgSrc = "http://drive.google.com/uc?export=view&id=1nmK1uNuIi8mBqVlyJde8Pf9hymfePUHd"
-
+let imgSrc = "http://drive.google.com/uc?export=view&id=1tRah3slaGrNr0BZqF-8jzTuRXBfTX6r4"
 
 function App() {
   // const location = useLocation();
@@ -74,7 +71,7 @@ function App() {
         <AppBar position="static"  sx={{ height:'100px', boxShadow: 'none' }} >
           <Container maxWidth="lg" >
             <Toolbar disableGutters sx={{ mt: '3%'}}>
-                  {/* //! 스몰 메뉴 햄버거 */}
+                  {/* //! 스몰 메뉴 (햄버거) */}
                   <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                     <IconButton
                       size="large"
@@ -116,8 +113,8 @@ function App() {
                   </Box>
 
 
-                  {/* //! 이게 풀스크린 메뉴  */}
-                  <Box sx={{  flexGrow: 0, mt: '3%' ,display: { xs: 'none', md: 'flex' } }}>
+                  {/* //! 풀스크린 메뉴  */}
+                  <Box sx={{  flexGrow: 0, top: '80%' ,display: { xs: 'none', md: 'flex' } }}>
                   {locationKor.map((page) => (
                         <MenuItem key={page.btName} onClick={handleCloseNavMenu}>
                         <NavLink className="select-none flex items-center" to={page.moveTo}>
@@ -128,29 +125,30 @@ function App() {
                   </Box>
 
                   {/* //! 아이콘/텍스트 */}
-                  <Box sx={{
-                          flexGrow: 0 ,
-                          position: 'absolute', 
-                          left: '50%', 
-                          mt: '105%',
-                          transform: 'translate(-50%, -50%)',
-                          minWidth: '30%', maxWidth: '110%',
-                          display: { xs: 'flex', sm: 'flex' }
-                        }}>
-                      {/* 로고 */}
-                      <Box>
-                        <NavLink className="select-none flex items-center" to="/main">
-                          <Box sx={{width: { xs: '210%', sm: '150%', md:'110%'}}}>
-                            <img src={imgSrc} alt={imgSrc}/>
-                          </Box>
-                        </NavLink>
-                      </Box>
+                  <Box  >
+                    {/* 로고 */}
+                    <Box>
+                      <NavLink 
+                        className="select-none static items-center"
+                        to="/main"
+                        >
+                        <Box sx={{
+                        flexGrow: 0 ,
+                        position: 'absolute', 
+                        left: '50%', 
+                        top: '80%',
+                        transform: 'translate(-50%, -50%)',
+                      }}>
+                          <img src={imgSrc} alt={imgSrc} sx={{width: { xs: '300%', sm: '300%', md:'300%'}}}/>
+                        </Box>
+                      </NavLink>
+                    </Box>
                   </Box>
                   
                   
 
                   {/* //! 회원 메뉴 */}
-                  <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , mt: '3%', right:'5%'}}>
+                  <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , top: '6%', right:'5%'}}>
                     <Tooltip title="Open settings">
                       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
