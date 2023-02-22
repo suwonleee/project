@@ -72,7 +72,7 @@ function App() {
           <Container maxWidth="lg" >
             <Toolbar disableGutters sx={{ mt: '3%'}}>
                   {/* //! 스몰 메뉴 (햄버거) */}
-                  <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+                  <Box sx={{ flexGrow: 0, mt: '3.5%', display: { xs: 'flex', md: 'none' } }}>
                     <IconButton
                       size="large"
                       aria-label="account of current user"
@@ -80,6 +80,7 @@ function App() {
                       aria-haspopup="true"
                       onClick={handleOpenNavMenu}
                       color="inherit"
+                      sx={{ mt: '4%'}}
                     >                  
                       <MenuIcon />
                     </IconButton>
@@ -138,8 +139,9 @@ function App() {
                         left: '50%', 
                         top: '80%',
                         transform: 'translate(-50%, -50%)',
-                        maxHeight: { xs: 200, sm:200, md: 250 },
-                        maxWidth: { xs: 300, sm:300, md: 350 },
+                        // todo  아이콘 크기 수정하는 코드, 아직 mid 부분 코드 수정해야함.
+                        maxHeight: { xs: 200, sm:200, md: 240 },
+                        maxWidth: { xs: 250, sm:270, md: 300 },
                       }}>
                           <img src={imgSrc} alt={imgSrc}/>
                           {/* width='12' height='12' /> */}
@@ -151,7 +153,7 @@ function App() {
                   
 
                   {/* //! 회원 메뉴 */}
-                  <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , top: '6%', right:'5%'}}>
+                  <Box sx={{ flexGrow: 0 , mx: 'auto', position: 'fixed' , top: '3.5%', right:'5%'}}>
                     <Tooltip title="Open settings">
                       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
