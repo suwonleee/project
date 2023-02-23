@@ -1,5 +1,6 @@
-// 거슬리는 색상 : #1A80D9 -> 두개가 나오는 메인 화면을 없애야한다. 하나를
+// eslint-disable
 
+// 거슬리는 색상 : #1A80D9 -> 두개가 나오는 메인 화면을 없애야한다. 하나를
 import * as React from 'react';
 import {
   NavLink,
