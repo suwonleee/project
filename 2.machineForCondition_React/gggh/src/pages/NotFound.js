@@ -5,8 +5,7 @@ const NotFound = () => {
     return (
         <Box 
             className="flex justify-center items-center" 
-            sx={{ bgcolor: 'black' , color: 'white', display: 'flex', height: '1000px'
-        }}>
+             v>
             404 Error
         </Box>
     );
