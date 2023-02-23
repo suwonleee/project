@@ -1,4 +1,7 @@
 //! function 을 하나 더 만들어서 ...answer로 되어 있는 애들 answer[0] ~ answer[4] 답변 출력 포맷으로 만들기.
+// 여기가 실습창  -> https://codepen.io/suwonleee/pen/bGxeqZM?editors=0011
+//도움 될만한 문서 -> https://ko.reactjs.org/docs/conditional-rendering.html
+
 import React from 'react';
 import Grid from '@mui/material/Grid';
 
@@ -14,6 +17,19 @@ export function QuestionAnswer (title, ...answers){
     marginRight: "auto",
     maxWidth: 600
   };
+  function printAnswer(index) {
+    
+    return (
+      <>
+        <Grid item xs={3} sm={3}>
+          <Box align="center">
+          {/* 이 부분에 이제 문장으로 들어가야 하는데 '리액트 표현방법 찾아보기.' */}
+            {index}. {aswers[index]}
+          </Box>
+        </Grid>;
+      </>
+    );
+  }
   return (
     <>
     {/* 질문지 큰 틀을 설정해주기 */}
