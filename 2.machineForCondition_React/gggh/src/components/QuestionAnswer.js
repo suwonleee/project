@@ -42,20 +42,6 @@ export function QuestionAnswer (title, ...answers){
         </div>
       )
     }
-  }
-  function printAnswer(index) {
-    
-    return (
-      <>
-        <Grid item xs={3} sm={3}>
-          <Box align="center">
-          {/* 이 부분에 이제 문장으로 들어가야 하는데 '리액트 표현방법 찾아보기.' */}
-            {index+1}. {aswers[index]}
-          </Box>
-        </Grid>;
-      </>
-    );
-  }
   return (
     <>
     {/* 질문지 큰 틀을 설정해주기 */}
