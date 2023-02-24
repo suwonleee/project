@@ -17,6 +17,32 @@ export function QuestionAnswer (title, ...answers){
     marginRight: "auto",
     maxWidth: 600
   };
+
+  // function App() {
+  //   const weekArr = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+  
+  //   return (
+  //     <div>
+  //       
+  //     </div>
+  //   );
+  // }
+  
+
+  const answerList = () => {
+      return(
+        <div>
+          {answers.map((element, index) => (
+            <Grid item xs={3} sm={3}>
+              <Box align="center">
+                {index} <br/> {element}.
+              </Box>
+            </Grid>
+          ))}
+        </div>
+      )
+    }
+  }
   function printAnswer(index) {
     
     return (
@@ -24,7 +50,7 @@ export function QuestionAnswer (title, ...answers){
         <Grid item xs={3} sm={3}>
           <Box align="center">
           {/* 이 부분에 이제 문장으로 들어가야 하는데 '리액트 표현방법 찾아보기.' */}
-            {index}. {aswers[index]}
+            {index+1}. {aswers[index]}
           </Box>
         </Grid>;
       </>
@@ -47,31 +73,6 @@ export function QuestionAnswer (title, ...answers){
         </Grid>
         {/*  //! 여기에 새로운 functiond을 넣어서 반복문 돌려줄까? */}
         {/* for (const qst of question) */}
-        <Grid item xs={3} sm={3}>
-          <Box align="center">
-            1 <br/>전혀 그렇지 않다.
-          </Box>
-        </Grid>
-        <Grid item xs={3} sm={3}>
-          <Box align="center">
-            2 <br/> 그렇지 않다.
-          </Box>
-        </Grid>
-        <Grid item xs={3} sm={3}>
-          <Box align="center">
-            3 <br/> 보통이다.
-          </Box>
-        </Grid>
-        <Grid item xs={3} sm={3}>
-          <Box align="center">
-            4 <br/> 그렇다.
-          </Box>
-        </Grid>
-        <Grid item xs={3} sm={3}>
-          <Box align="center">
-          5 <br/> 매우 그렇다.
-          </Box>
-        </Grid>
       </Grid>
       
     </>
