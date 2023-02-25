@@ -1,0 +1,72 @@
+/* //! 사이드바가 시간초별로 바뀐다. 광고 넣기 좋을듯 사이즈 맞춰서. */
+/* //? link는 https://codepen.io/suwonleee/pen/ExegeRr */
+
+/* //! html 파트  */
+/* <div class="box-1">
+  <div>내용 1</div>
+  <div>내용 2</div>
+  <div>내용 3</div>
+  <div>내용 4</div>
+  <div>내용 5</div>
+</div> */
+
+.box-1 {
+  --box-1__height:100px;
+  width:200px;
+  height:var(--box-1__height);
+  border:10px solid red;
+  overflow:hidden;
+}
+
+.box-1 > div {
+  height:100%;
+}
+
+.box-1 > div:nth-child(1) {
+  animation-name:ani-1;
+  animation-duration: 10s;
+  animation-fill-mode:both;
+  animation-iteration-count:infinite;
+}
+
+.box-1:hover > div:nth-child(1) {
+  animation-play-state:paused;
+}
+
+@keyframes ani-1 {
+  0% {
+    margin-top:0;
+  }
+  
+  20% {
+    margin-top:0;
+  }
+  
+  25% {
+    margin-top:calc(var(--box-1__height) * -1);
+  }
+  
+  45% {
+    margin-top:calc(var(--box-1__height) * -1);
+  }
+  
+  50% {
+    margin-top:calc(var(--box-1__height) * -2);
+  }
+  
+  70% {
+    margin-top:calc(var(--box-1__height) * -2);
+  }
+  
+  75% {
+    margin-top:calc(var(--box-1__height) * -3);
+  }
+  
+  95% {
+    margin-top:calc(var(--box-1__height) * -3);
+  }
+  
+  100% {
+    margin-top:0;
+  }
+}
