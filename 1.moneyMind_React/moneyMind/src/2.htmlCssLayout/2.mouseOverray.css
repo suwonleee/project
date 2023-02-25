@@ -1,0 +1,69 @@
+/* //! 마우스 오버레이 에시 -> 마우스를 올려놓으면 글씨가 커짐. */
+/* //? link는 https://codepen.io/suwonleee/pen/LYJRJBw */
+
+/* //! html 파트  */
+/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+
+<nav>
+  <ul class="flex">
+    <li>
+      <span>
+        <span>안녕하세요.</span>
+        <span>안녕하세요.</span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span>잘가세요.</span>
+        <span>잘가세요.</span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span>또또또!!봐요!!</span>
+        <span>또또또!!봐요!!</span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span>하이하이하이</span>
+        <span>하이하이하이</span>
+      </span>
+    </li>
+  </ul>
+</nav> */
+
+nav {
+  font-size:2rem;
+}
+
+nav > ul > li > span {
+  display:block;
+  position:relative;
+  padding:10px;
+}
+
+nav > ul > li > span > span {
+  display:block;
+}
+
+nav > ul > li > span > span:first-child {
+  color:transparent;
+}
+
+nav > ul > li > span > span:last-child {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+nav > ul > li:hover > span > span:last-child {
+  font-weight:bold;
+  transform:scale(1.2);
+  transition:transform .1s ease 0s;
+}
