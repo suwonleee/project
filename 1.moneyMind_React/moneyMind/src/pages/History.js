@@ -31,6 +31,8 @@ function RecordListItem({ record, optionDrawerStatus }) {
           color="primary"
         />
       </div>
+
+      {/* //! 기록 페이지 내 라운드   */}
       <div className="mt-2 sm:mt-4 shadow rounded-[20px] flex">
         <div className="px-5 hover:text-[color:var(--mui-color-primary-main)] flex-grow flex items-center whitespace-pre-wrap leading-relaxed my-5">
           {record.count}회 수행

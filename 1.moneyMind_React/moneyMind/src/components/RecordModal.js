@@ -23,7 +23,10 @@ export function useRecordModalStatus() {
 // function({isActive}) 
 // function (arg) { const isActive = args.isActive;} 
 
+//! ***********************
+//! 기록 해주는 동작 함수 완전 처음 
 export function RecordModal({
+  //todo 함수에 담아주는 변수
   status,
   msg,
   initialQuantity = 0,  //초기 개수
@@ -55,13 +58,18 @@ export function RecordModal({
     setRecordCount(newRecordCount); //useState에 새 값으로 교체
   };
   
-  // ?
+  // ! 기록된 값을 저장해주는 함수
   const saveRecord = () => {
+    // 기록 값이 0인 경우
     if (recordCount === 0) return;
 
+    // useState 다음번에 새 값(0) 담아주고
     setRecordCount(0);
+
+    // 상태창 닫아주기 (기록 완료 했으니깐)
     status.close();
 
+    // 
     _saveRecord(recordCount);
   };
 

@@ -1,0 +1,55 @@
+/* //! html 파트  */
+/* //! 탑바를 제외하고 섹션이 줄줄이 나눠져있다. 예쁘게 간격별로 */
+/* <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<header class="top-bar">
+  탑바
+</header>
+
+<section class="section-1">섹션 1</section>
+<section class="section-2">섹션 2</section>
+<section class="section-3">섹션 3</section>
+<section class="section-4">섹션 4</section>
+<section class="section-5">섹션 5</section>
+<section class="section-6">섹션 6</section>
+<section class="section-7">섹션 7</section>
+<section class="section-8">섹션 8</section>
+<section class="section-9">섹션 9</section>
+<section class="section-10">섹션 10</section> */
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.top-bar {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100px;
+  color:white; /* 필수 */
+  border:2px solid currentcolor;
+  z-index:100;
+  mix-blend-mode:difference;
+}
+
+body > section {
+  min-height:100vh;
+  background-color:white; /* 필수 */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  font-weight:bold;
+}
+
+body > section:nth-of-type(2n) {
+  background-color:black;
+  color:white;
+}
