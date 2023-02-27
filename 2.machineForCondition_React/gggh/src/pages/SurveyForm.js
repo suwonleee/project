@@ -3,6 +3,9 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 
 import { Box } from "@material-ui/core";
+import Checkbox from '@mui/material/Checkbox';
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 function SurveyForm (){
   const gridStyles = {
@@ -28,7 +31,13 @@ function SurveyForm (){
           </Box>
         </Grid>
         <Grid item xs={3} sm={3}>
+        
           <Box align="center">
+          <Checkbox
+            {...label}
+            defaultChecked
+            sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+          /><br/>
             1 <br/>전혀 그렇지 않다.
 
           </Box>
