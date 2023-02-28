@@ -7,14 +7,14 @@ import { Box } from "@material-ui/core";
 import Checkbox from '@mui/material/Checkbox';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-const compList = ("이번에 몇회 하셨나요?","1.전혀 그렇지 않다.", "2.그렇지 않다.", "3.보통이다.", "4.그렇다.", "5.매우 그렇다.")
-function Test (compList){
-  
+
+
+function Test (){
+  const compList = ["나는 인터넷을 하고 난 뒤 창을 전부 닫는다.","전혀 그렇지 않다", "그렇지 않다", "보통이다", "그렇다", "매우 그렇다"]
   return (
     <>
       <div className="flex-1 flex items-center justify-center">
-
-        {QuestionAnswer("나는 인터넷을 하고 난 뒤 창을 전부 닫는다.","전혀 그렇지 않다.", "그렇지 않다.", "보통이다.", "그렇다.", "매우 그렇다.")}
+        {QuestionAnswer("나는 인터넷을 하고 난 뒤 창을 전부 닫는다.","전혀 그렇지 않다", "그렇지 않다", "보통이다", "그렇다", "매우 그렇다")}
       </div>
     </>
   );

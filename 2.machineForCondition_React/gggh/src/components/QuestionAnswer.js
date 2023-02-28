@@ -27,7 +27,7 @@ export function QuestionAnswer (title, ...answers){
     <>
       <Grid container
       spacing={2}
-      rowSpacing={12}
+      rowSpacing={2}
       columnSpacing={5}
       columns={16}
       sx={gridStyles}>
@@ -39,22 +39,18 @@ export function QuestionAnswer (title, ...answers){
         </Grid>
         {/*  //todo 여기에 새로운 function을 넣어서 반복문 돌려줄까? */}
         {/* 리액트 JSX 안 반복문 https://codingbroker.tistory.com/123 */}
-        <div>
-          {answers.map((sentence, index) => (
-            <span key={index}>
-              <Grid item xs={3} sm={3}>
-                <Box align="center">
-                  <Checkbox
-                    {...label}
-                    defaultChecked
-                    sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
-                  /><br/>
-                  {index + 1}.{sentence}.
-                </Box>
-              </Grid>
-            </span>
-          ))}
-        </div>
+        {answers.map((sentence, index) => (
+          <Grid item xs={3} sm={3}>
+            <Box align="center">
+              <Checkbox
+                {...label}
+                // defaultChecked
+                sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+              /><br/>
+              {index + 1}.<br/>{sentence}.
+            </Box>
+          </Grid>
+        ))}
       </Grid>
       
     </>
