@@ -12,12 +12,12 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 export function QuestionAnswer (title, ...answers){
   const gridStyles = {
     // backgroundColor: "blue",
-    paddingBottom: 2,
+    paddingBottom: 1,
     paddingRight: 2,
-    marginTop: 2,
+    marginTop: 12,
     marginLeft: "auto",
     marginRight: "auto",
-    maxWidth: 600
+    maxWidth: 800
   };
   // todo 에러 코드 활용
   const error = [...answers].filter((v) => v).length !== 1;
