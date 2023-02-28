@@ -5,7 +5,7 @@ const NotFound = () => {
     return (
         <Box 
             className="flex justify-center items-center" 
-             v>
+            v>
             404 Error
         </Box>
     );

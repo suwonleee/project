@@ -1,6 +1,5 @@
 //! function 을 하나 더 만들어서 ...answer로 되어 있는 애들 answer[0] ~ answer[4] 답변 출력 포맷으로 만들기.
 // 여기가 실습창  -> https://codepen.io/suwonleee/pen/bGxeqZM?editors=0011
-//도움 될만한 문서 -> https://ko.reactjs.org/docs/conditional-rendering.html
 
 import React from 'react';
 import Grid from '@mui/material/Grid';
@@ -20,19 +19,9 @@ export function QuestionAnswer (title, ...answers){
     marginRight: "auto",
     maxWidth: 600
   };
+  // todo 에러 코드 활용
   const error = [...answers].filter((v) => v).length !== 1;
-
-  // function App() {
-  //   const weekArr = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   
-  //   return (
-  //     <div>
-  //       
-  //     </div>
-  //   );
-  // }
-  
-
   const answerList = () => {
       return(
         <div>
@@ -66,11 +55,46 @@ export function QuestionAnswer (title, ...answers){
             Q. {title}
           </Box>
         </Grid>
-        {/*  //! 여기에 새로운 functiond을 넣어서 반복문 돌려줄까? */}
+        {/*  //todo 여기에 새로운 function을 넣어서 반복문 돌려줄까? */}
         {/* for (const qst of question) */}
+        {/* 리액트 JSX 안 반복문 https://codingbroker.tistory.com/123 */}
+        <div>
+          {answers.map((sentence, index) => (
+            <span key={index}>
+              <Grid item xs={3} sm={3}>
+          
+                <Box align="center">
+                  <Checkbox
+                    {...label}
+                    defaultChecked
+                    sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+                  /><br/>
+                  {index}. <br/>{sentence}.
+                </Box>
+              </Grid>
+                
+                {" / "}
+            </span>
+          ))}
+        </div>
       </Grid>
       
     </>
   );
 }
 
+  // todo 이걸 활용해서 결과 창에 넣자.
+// function App() {
+//   const weekArr = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+
+//   return (
+    // <div>
+    //   {weekArr.map((week, index) => (
+    //     <span key={index}>
+    //       {week}
+    //       {" / "}
+    //     </span>
+    //   ))}
+    // </div>
+//   );
+// }

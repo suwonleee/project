@@ -24,9 +24,9 @@ function RecordAddModal({ status }) {
     </>
   );
 }
-// ## 메인 페이지관련 컴포넌트 끝
+//  메인 페이지관련 컴포넌트 끝
 
-// ## 메인 페이지 시작
+//  메인 페이지 시작
 function Main() {
   const recordsStatus = useRecordsStatus();
 
