@@ -6,6 +6,9 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 
 import { Box } from "@material-ui/core";
+import Checkbox from '@mui/material/Checkbox';
+
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export function QuestionAnswer (title, ...answers){
   const gridStyles = {
@@ -17,6 +20,7 @@ export function QuestionAnswer (title, ...answers){
     marginRight: "auto",
     maxWidth: 600
   };
+  const error = [...answers].filter((v) => v).length !== 1;
 
   // function App() {
   //   const weekArr = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -35,6 +39,11 @@ export function QuestionAnswer (title, ...answers){
           {answers.map((element, index) => (
             <Grid item xs={3} sm={3}>
               <Box align="center">
+              <Checkbox
+                {...label}
+                defaultChecked
+                sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
+              /><br/>
                 {index} <br/> {element}.
               </Box>
             </Grid>

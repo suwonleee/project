@@ -28,7 +28,7 @@ import {
 } from "react-router-dom";
 import SurveyForm from "./pages/SurveyForm";
 import NotebookList from "./pages/NotebookList";
-import NotFound from "./pages/NotFound";
+import Test from "./pages/Test";
 import Main from "./pages/Main";
 
 // import { Grid } from '@mui/material';
@@ -43,7 +43,7 @@ function App() {
     {btName : "노트북", moveTo: "surveyform"},
     {btName : "성능", moveTo: "notebooklist"},
     {btName : "블로그", moveTo: "surveyform"},
-    {btName : "추가1", moveTo: "notebooklist"},
+    {btName : "추가1", moveTo: "test"},
   ];
   //영어 페이지를 만든다면
   // const pagesEng = ['Products', 'Pricing', 'Blog'];
@@ -193,6 +193,8 @@ function App() {
 
           <Route path="/surveyform" element={<SurveyForm />} />
           <Route path="/notebooklist" element={<NotebookList/>} />
+          <Route path="/test" element={<Test />} />
+
 
           <Route path="*" element={<Main/>} />
             
