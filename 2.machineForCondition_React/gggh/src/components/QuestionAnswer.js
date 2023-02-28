@@ -22,27 +22,9 @@ export function QuestionAnswer (title, ...answers){
   // todo 에러 코드 활용
   const error = [...answers].filter((v) => v).length !== 1;
   
-  const answerList = () => {
-      return(
-        <div>
-          {answers.map((element, index) => (
-            <Grid item xs={3} sm={3}>
-              <Box align="center">
-              <Checkbox
-                {...label}
-                defaultChecked
-                sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
-              /><br/>
-                {index} <br/> {element}.
-              </Box>
-            </Grid>
-          ))}
-        </div>
-      )
-    }
+  // ! 답변을 하나하나 반복해서 출력해준다.
   return (
     <>
-    {/* 질문지 큰 틀을 설정해주기 */}
       <Grid container
       spacing={2}
       rowSpacing={12}
@@ -56,24 +38,20 @@ export function QuestionAnswer (title, ...answers){
           </Box>
         </Grid>
         {/*  //todo 여기에 새로운 function을 넣어서 반복문 돌려줄까? */}
-        {/* for (const qst of question) */}
         {/* 리액트 JSX 안 반복문 https://codingbroker.tistory.com/123 */}
         <div>
           {answers.map((sentence, index) => (
             <span key={index}>
               <Grid item xs={3} sm={3}>
-          
                 <Box align="center">
                   <Checkbox
                     {...label}
                     defaultChecked
                     sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}
                   /><br/>
-                  {index}. <br/>{sentence}.
+                  {index + 1}.{sentence}.
                 </Box>
               </Grid>
-                
-                {" / "}
             </span>
           ))}
         </div>
