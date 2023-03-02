@@ -1,0 +1,65 @@
+/* 스크롤바 꾸미기 시작 */
+:root {
+  /* overflow-y: overlay; */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(45, 45, 45, 0.3);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+/* 스크롤바 꾸미기 끝 */
+
+/* 폰트 : 지마켓 산스 */
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 폰트 : 로보토 모노 */
+.font-mono {
+  font-family: "Roboto Mono", monospace;
+}
+
+/* 커스텀 */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+html > body,
+html > body input,
+html > body select,
+html > body textarea,
+html > body pre,
+html > body button {
+  font-family: "GmarketSansMedium";
+  color: #333;
+  text-underline-position: under;
+  line-height: 1.3;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+/* confetti-canvas */
+#confetti-canvas {
+  z-index: 2500 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
