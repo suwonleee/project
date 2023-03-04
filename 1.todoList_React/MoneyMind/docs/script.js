@@ -1,8 +1,37 @@
+//https://codepen.io/suwonleee/pen/bGxRbgV?editors=0010
+
+//! 0. 임포트 (import)
+
+//! 1. 유틸리티 (utillity)
+
+//! 2. 리코일 퍼시스트 저장소 (recoil persist)
+
+//! 3. 유틸리티 컴포넌트 (utilliy components)
+//todo ## 3-1. 커스텀 스낵바
+//todo ## 3-2. 명언 데이터
+//todo ## 3-3. 카운터 업, 시작
+//todo ## 3-4. confetti-canvas 시작
+
+//! 4. 비지니스 로직 시작
+//todo ## 4-1. recordsStatus 시작
+
+//! # 5. 공통 컴포넌트 시작
+//todo ## 5-1. 기록 모달 시작
+
+//! # 6. 페이지들 시작
+//todo ## 6-1. 메인 페이지관련 컴포넌트 시작
+//todo ## 6-2. 메인 페이지 시작
+//todo ## 6-3.히스토리 페이지관련 컴포넌트 시작
+//todo ## 6-4. 히스토리 페이지 시작
+
+//! # 7. 앱 세팅 시작
 
 
 
 
-//! # 임포트 시작
+
+
+//! # 0. 임포트 시작
 const { useState, useRef, useEffect, useMemo } = React;
 
 import classNames from "https://cdn.skypack.dev/classnames";
@@ -57,7 +86,7 @@ const {
 import { CountUp } from "https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.1.0/countUp.min.js";
 // # 임포트 끝
 
-// ! 유틸리티 시작
+// ! # 1. 유틸리티 시작
 
 // 날짜 객체 입력받아서 문장(yyyy-mm-dd hh:mm:ss)으로 반환한다.
 function dateToStr(d) {
@@ -82,7 +111,7 @@ function dateToStr(d) {
 
 // # 유틸리티 끝
 
-//! 리코일 퍼시스트 저장소 시작
+//! # 2. 리코일 퍼시스트 저장소 시작
 const { persistAtom: persistAtomCommon } = recoilPersist({
   key: "persistAtomCommon"
 });
