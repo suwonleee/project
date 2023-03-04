@@ -9,28 +9,27 @@
 //! 3. 유틸리티 컴포넌트 (utilliy components)
 //todo ## 3-1. 커스텀 스낵바
 //todo ## 3-2. 명언 데이터
-//todo ## 3-3. 카운터 업, 시작
-//todo ## 3-4. confetti-canvas 시작
+//todo ## 3-3. 카운터 업, 
+//todo ## 3-4. confetti-canvas 
 
-//! 4. 비지니스 로직 시작
-//todo ## 4-1. recordsStatus 시작
+//! 4. 비지니스 로직 
+//todo ## 4-1. recordsStatus 
 
-//! # 5. 공통 컴포넌트 시작
-//todo ## 5-1. 기록 모달 시작
-
-//! # 6. 페이지들 시작
-//todo ## 6-1. 메인 페이지관련 컴포넌트 시작
-//todo ## 6-2. 메인 페이지 시작
-//todo ## 6-3.히스토리 페이지관련 컴포넌트 시작
-//todo ## 6-4. 히스토리 페이지 시작
-
-//! # 7. 앱 세팅 시작
+//! # 5. 공통 컴포넌트 
+//todo ## 5-1. 기록
+//todo ## 5-2. 기록 모달 창 세부 기술
 
 
+//! # 6. 페이지들
+//todo ## 6-1. 메인 페이지관련 컴포넌트
+//todo ## 6-2. 메인 페이지
+//todo ## 6-3.히스토리 페이지관련 컴포넌트
+//todo ## 6-4. 히스토리 페이지
+
+//! # 7. 앱 세팅
 
 
-
-
+//----------------------------------------------------
 //! # 0. 임포트 시작
 const { useState, useRef, useEffect, useMemo } = React;
 
@@ -86,7 +85,7 @@ const {
 import { CountUp } from "https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.1.0/countUp.min.js";
 // # 임포트 끝
 
-// ! # 1. 유틸리티 시작
+// ! # 1. 유틸리티 시작----------------------------
 
 // 날짜 객체 입력받아서 문장(yyyy-mm-dd hh:mm:ss)으로 반환한다.
 function dateToStr(d) {
@@ -111,7 +110,7 @@ function dateToStr(d) {
 
 // # 유틸리티 끝
 
-//! # 2. 리코일 퍼시스트 저장소 시작
+//! # 2. 리코일 퍼시스트 저장소 시작----------------------------
 const { persistAtom: persistAtomCommon } = recoilPersist({
   key: "persistAtomCommon"
 });
@@ -269,7 +268,6 @@ const myConfetti = confetti.create(document.querySelector("#confetti-canvas"), {
   useWorker: true
 });
 // ## confetti-canvas 끝
-
 // # 유틸리티 컴포넌트 끝
 
 //! # 비지니스 로직 시작
@@ -378,12 +376,14 @@ function useRecordsStatus() {
 // ## recordsStatus 끝
 // # 비지니스 로직 끝
 
-//! # 공통 컴포넌트 시작
 
-//todo ## 기록 모달 시작
+//! # 공통 컴포넌트 시작
+//todo ## 기록 모달 상태
 function useRecordModalStatus() {
+  //기록 모달 상태를 활용할 때 ! 
   const [opened, setOpened] = useState(false);
 
+  //닫힘 & 열림 상태에 따라 변경
   const close = () => setOpened(false);
   const open = () => setOpened(true);
 
@@ -394,6 +394,7 @@ function useRecordModalStatus() {
   };
 }
 
+//todo ## 기록 모달 창 세부 기술
 function RecordModal({
   status,
   msg,
@@ -409,21 +410,20 @@ function RecordModal({
     setRecordCount(initialQuantity);
   }, [initialQuantity]);
 
+  // 기록된 값 변경
   const changeRecordCount = (addiCount) => {
     if (addiCount > 0) {
       myConfetti({
         particleCount: addiCount * 10,
         spread: 160
-        // any other options from the global
-        // confetti function
       });
     }
-
     const newRecordCount =
       recordCount + addiCount < 0 ? 0 : recordCount + addiCount;
     setRecordCount(newRecordCount);
   };
 
+  // 값 저장
   const saveRecord = () => {
     if (recordCount == 0) return;
 
@@ -433,6 +433,7 @@ function RecordModal({
     _saveRecord(recordCount);
   };
 
+  // 값 취소
   const cancelRecord = () => {
     setRecordCount(initialQuantity);
     status.close();
@@ -448,9 +449,12 @@ function RecordModal({
         onClose={cancelRecord}
       >
         <div className="bg-white rounded-[20px] p-7 w-full max-w-lg">
+          {/* msg = 메시지(이번에 몇회 하셨나요?) */}
           <div className="text-center select-none">{msg}</div>
+          {/* 정 가운데 숫자 기록 칸  -> recordCount  */}
           <div className="text-center">
             <span className="text-[70px] text-[color:var(--mui-color-primary-main)] font-mono select-none">
+            {/* 시작 값을 두자리(2)수, 0으로 설정 */}
               {String(recordCount).padStart(2, "0")}
             </span>
           </div>
@@ -492,6 +496,7 @@ function RecordAddModal({ status }) {
 
   const noticeSnackbarStatus = useNoticeSnackbarStatus();
 
+  //기록이 완료되면 스낵바에서 '이번 세트에 __회 수행하셨습니다.'
   const saveRecord = (recordCount) => {
     recordsStatus.saveRecord(recordCount);
     noticeSnackbarStatus.open(`이번 세트에 ${recordCount}회 수행하셨습니다.`);
@@ -522,6 +527,7 @@ function MainPage() {
         <div>
           <div className="text-[70px] text-[color:var(--mui-color-primary-main)] font-mono select-none">
             <CountNumber
+            
               start={recordsStatus.goalCount}
               end={recordsStatus.restCount}
               duration={3}
