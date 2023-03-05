@@ -1,4 +1,5 @@
 // 챕터 72, 2강, 비동기식 함수들은 리턴을 통해서 값을 전달할 수 없다.
+//https://codepen.io/suwonleee/pen/PodjOGb?editors=1111
 
 function a() {
   console.log("a 실행됨");
