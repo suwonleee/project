@@ -2,7 +2,7 @@
 //https://codepen.io/suwonleee/pen/poOwVNm
 
 //! 
-// 발행
+// 유튜버로서 영상을 올리면
 const myFirstPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve(10);
@@ -11,7 +11,7 @@ const myFirstPromise = new Promise((resolve, reject) => {
   //reject(new Error("404"));
 });
 
-// 구독
+// 그 영상을 통해서 구독을 여러개 받을 수 있다.
 myFirstPromise.then((data) => {
   console.log("성공");
   console.log(data);
