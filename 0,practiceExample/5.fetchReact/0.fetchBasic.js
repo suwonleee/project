@@ -1,4 +1,4 @@
-//챕터 73, 2강, fetch를 사용해서 외부 데이터 불러오기
+// fetch를 사용해서 외부 데이터 불러오기
 //https://codepen.io/suwonleee/pen/zYJzXaB?editors=0012
 
 //fetch를 통해 이미지 데이터를 받아온다.
