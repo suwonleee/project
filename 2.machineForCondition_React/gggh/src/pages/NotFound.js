@@ -1,4 +1,3 @@
-import React from 'react';
 import { read, utils } from "https://cdn.sheetjs.com/xlsx-latest/package/xlsx.mjs";
 
 // import { Box } from '@mui/material';
@@ -28,9 +27,11 @@ export default NotFound; */
 
 const NotFound = async () => {
     try {
-        const res = await fetch('../db/notebookInfo.xlsx');
+        const res = await fetch('../db/geo.xlsx');
         if (!res.ok) {
-        throw new Error(`xlsx file 요청 실패 ${e.message}`);
+            const e = new Error("xlsx file 요청 실패");
+
+            throw e;
         }
         const buffer = await res.arrayBuffer()
         const workbook = read(buffer, {type: 'array'});
