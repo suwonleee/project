@@ -1,3 +1,5 @@
+//https://east-star.tistory.com/6
+
 import { read, utils } from "https://cdn.sheetjs.com/xlsx-latest/package/xlsx.mjs";
 
 // import { Box } from '@mui/material';
@@ -40,9 +42,9 @@ const NotFound = async () => {
     } catch (e) {
         throw new Error(e);
     }
-    }
+}
 
-    const parseXLSX = (workbook) => {
+const parseXLSX = (workbook) => {
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
     const rows = utils.sheet_to_row_object_array(sheet);
     const geocoding = {};
@@ -52,19 +54,19 @@ const NotFound = async () => {
         const address2 = row['2단계'];
         const address3 = row['3단계'];
         const coordinate = {
-        lat: row['경도(시)'],
-        lon: row['위도(시)'],
+            lat: row['경도(시)'],
+            lon: row['위도(시)'],
         };
 
         if (!geocoding[address1]) {
-        geocoding[address1] = coordinate;
+            geocoding[address1] = coordinate;
         } else if (!geocoding[address1][address2]) {
-        geocoding[address1][address2] = coordinate;
+            geocoding[address1][address2] = coordinate;
         } else {
-        geocoding[address1][address2][address3] = coordinate;
+            geocoding[address1][address2][address3] = coordinate;
         }
     });
 
     return geocoding;
-    };
+};
 export default NotFound;
