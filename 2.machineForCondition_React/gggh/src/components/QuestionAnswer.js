@@ -4,7 +4,7 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 
-import { Box } from "@material-ui/core";
+import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };

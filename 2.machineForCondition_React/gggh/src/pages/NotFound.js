@@ -2,6 +2,8 @@
 
 import { read, utils } from "https://cdn.sheetjs.com/xlsx-latest/package/xlsx.mjs";
 
+// 거슬리는 색상 : #1A80D9 -> 두개가 나오는 메인 화면을 없애야한다. 하나를
+
 // import { Box } from '@mui/material';
 
 /* const NotFound = async () => {
@@ -32,6 +34,7 @@ const NotFound = async () => {
         const res = await fetch('../db/geo.xlsx');
         if (!res.ok) {
             const e = new Error("xlsx file 요청 실패");
+
 
             throw e;
         }
@@ -69,4 +72,7 @@ const parseXLSX = (workbook) => {
 
     return geocoding;
 };
+
 export default NotFound;
+
+// Uncaught Error: Objects are not valid as a React child (found: [object Promise]). If you meant to render a collection of children, use an array instead.
