@@ -1,78 +1,69 @@
-//https://east-star.tistory.com/6
+import React, { useState, useEffect } from 'react';
 
-import { read, utils } from "https://cdn.sheetjs.com/xlsx-latest/package/xlsx.mjs";
+/*
+// 리액트 라우터(화면 이동)
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+  Navigate,
+  useParams,
+  useNavigate
+} from "https://cdn.skypack.dev/react-router-dom@6";
+*/
 
-// 거슬리는 색상 : #1A80D9 -> 두개가 나오는 메인 화면을 없애야한다. 하나를
+/*
+// 리코일
+import {
+  RecoilRoot,
+  atom,
+  useRecoilState
+} from "https://cdn.skypack.dev/recoil";
+*/
 
-// import { Box } from '@mui/material';
+function NotFound() {
+  const [no, setNo] = useState(0);
 
-/* const NotFound = async () => {
-    try {
-        const res = await fetch('../db/notebookInfo.xlsx');
-        if (!res.ok) {
-        throw new Error(`xlsx file 요청 실패 ${e.message}`);
-        }
-        const buffer = await res.arrayBuffer()
-        const workbook = read(buffer, {type: 'array'});
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [imgs, setImgs] = useState([]);
 
-        return parseXLSX(workbook);
-        } catch (e) {
-        throw new Error(e);
-    }
-    // return (
-    //     <Box 
-    //         className="flex justify-center items-center" 
-    //         v>
-    //         404 Error
-    //     </Box>
-    // );
+  useEffect(() => {
+    fetch("https://picsum.photos/v2/list?page=1&limit=5")
+      .then((data) => data.json())
+      .then((data) => {
+        console.log(data);
+        console.log(data[0]["author"]);
+      })
+      .then((data) => data.json())
+      .then((data) => setImgs(data))
+      .then(() => setIsLoading(false))
+      .catch((err) => setError(new Error(404)));
+  }, []);
+
+  if (error) {
+    return <>에러 : {error.message}</>;
+  }
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+
+  return (
+    <>
+      <ul>
+        {imgs.map((img) => (
+          <li key={img.id}>
+            번호 : {img.id}
+            <br />
+            작가 : {img.author}
+          </li>
+        ))}
+        {/* {imgs[1].author} */}
+      </ul>
+      <button onClick={() => setNo(no + 1)}>숫자 : {no}</button>
+    </>
+  );
 }
-export default NotFound; */
-
-const NotFound = async () => {
-    try {
-        const res = await fetch('../db/geo.xlsx');
-        if (!res.ok) {
-            const e = new Error("xlsx file 요청 실패");
-
-
-            throw e;
-        }
-        const buffer = await res.arrayBuffer()
-        const workbook = read(buffer, {type: 'array'});
-
-        return parseXLSX(workbook);
-    } catch (e) {
-        throw new Error(e);
-    }
-}
-
-const parseXLSX = (workbook) => {
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const rows = utils.sheet_to_row_object_array(sheet);
-    const geocoding = {};
-
-    rows.forEach((row) => {
-        const address1 = row['1단계'];
-        const address2 = row['2단계'];
-        const address3 = row['3단계'];
-        const coordinate = {
-            lat: row['경도(시)'],
-            lon: row['위도(시)'],
-        };
-
-        if (!geocoding[address1]) {
-            geocoding[address1] = coordinate;
-        } else if (!geocoding[address1][address2]) {
-            geocoding[address1][address2] = coordinate;
-        } else {
-            geocoding[address1][address2][address3] = coordinate;
-        }
-    });
-
-    return geocoding;
-};
-
 export default NotFound;
-
-// Uncaught Error: Objects are not valid as a React child (found: [object Promise]). If you meant to render a collection of children, use an array instead.
